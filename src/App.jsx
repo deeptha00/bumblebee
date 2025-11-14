@@ -120,7 +120,7 @@ const COMPANY = {
   leaders: [
     {
       name: "Jiju K",
-      title: "Designated Partner",
+      title: "CEO",
       summary:
         "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
       highlights: [
@@ -132,7 +132,7 @@ const COMPANY = {
     },
     {
       name: "Rakesh Roshan R",
-      title: "Designated Partner",
+      title: "CFO & Co-Founder",
       summary:
         "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
       highlights: [
