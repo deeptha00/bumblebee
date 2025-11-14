@@ -176,7 +176,7 @@ function Topbar() {
               <img src={logo} alt="Bumble Bee logo" className="w-full h-full object-contain" />
             </div>
             <div className="text-white font-semibold leading-tight">
-              <div className="text-base">{COMPANY.name.split(" ")[0]} </div>
+              <div className="text-base">{COMPANY.short} </div>
               <div className="text-xs text-slate-300 -mt-0.5">Corporate Solutions Pvt. Ltd.</div>
             </div>
           </a>
