@@ -33,7 +33,7 @@ const cardHover = { scale: 1.03, y: -6, transition: { duration: 0.25 } };
 // ---------- Content (pulled from uploaded docs) ----------
 const COMPANY = {
   name: "Bumble Bee Corporate Solutions Private Limited",
-  short: "Bumble Bee",
+  short: "BumbleBee",
   tagline: "Redefining learning — empowering growth",
   about:
     "Bumble Bee is a specialized Corporate Training and Human Resource Recruitment Consultancy committed to empowering organizations with the right people and the right skills. With strong expertise in the Banking and Financial Services Industry (BFSI) and diverse other sectors, we bridge the gap between talent development and talent acquisition, enabling businesses to achieve sustainable growth.",
