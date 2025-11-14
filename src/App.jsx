@@ -32,11 +32,11 @@ const cardHover = { scale: 1.03, y: -6, transition: { duration: 0.25 } };
 
 // ---------- Content (pulled from uploaded docs) ----------
 const COMPANY = {
-  name: "Bumblee Corporate Solutions Private Limited",
-  short: "Bumblee",
+  name: "Bumble Bee Corporate Solutions Private Limited",
+  short: "Bumble Bee",
   tagline: "Redefining learning — empowering growth",
   about:
-    "Bumblee is a specialized Corporate Training and Human Resource Recruitment Consultancy committed to empowering organizations with the right people and the right skills. With strong expertise in the Banking and Financial Services Industry (BFSI) and diverse other sectors, we bridge the gap between talent development and talent acquisition, enabling businesses to achieve sustainable growth.",
+    "Bumble Bee is a specialized Corporate Training and Human Resource Recruitment Consultancy committed to empowering organizations with the right people and the right skills. With strong expertise in the Banking and Financial Services Industry (BFSI) and diverse other sectors, we bridge the gap between talent development and talent acquisition, enabling businesses to achieve sustainable growth.",
   vision:
     "To be a trusted partner in nurturing people and organizations, helping them grow and succeed in today’s dynamic world by transforming learning into meaningful action.",
   missionPoints: [
@@ -114,7 +114,7 @@ const COMPANY = {
     website: "www.bumblebeeindia.com",
   },
   testimonials: [
-    { quote: "Bumblee helped us transform frontline sales capability with measurable results.", name: "ICICI Bank" },
+    { quote: "Bumble Bee helped us transform frontline sales capability with measurable results.", name: "ICICI Bank" },
     { quote: "Their recruitment expertise is unmatched — quality hires, fast turnaround.", name: "RenewBuy" },
   ],
   leaders: [
@@ -173,7 +173,7 @@ function Topbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <a href="#hero" className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-lg overflow-hidden shadow-md bg-white p-1">
-              <img src={logo} alt="Bumblee logo" className="w-full h-full object-contain" />
+              <img src={logo} alt="Bumble Bee logo" className="w-full h-full object-contain" />
             </div>
             <div className="text-white font-semibold leading-tight">
               <div className="text-base">{COMPANY.name.split(" ")[0]} </div>
@@ -268,7 +268,7 @@ function Hero() {
               <img src={logo} alt="logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white">Bumblee Corporate Solutions</h3>
+              <h3 className="text-xl font-bold text-white">Bumble Bee Corporate Solutions</h3>
               <div className="text-sm text-slate-300">Training • Recruitment • Student Programs</div>
             </div>
           </div>
@@ -302,7 +302,7 @@ function About() {
           viewport={{ once: true }}
           variants={stagger}
         >
-          <motion.h2 className="text-3xl md:text-4xl font-bold" variants={fadeUp}>About Bumblee</motion.h2>
+          <motion.h2 className="text-3xl md:text-4xl font-bold" variants={fadeUp}>About Bumble Bee</motion.h2>
           <motion.p className="text-slate-300" variants={fadeUp}>
             {COMPANY.about}
           </motion.p>
