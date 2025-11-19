@@ -1,6 +1,7 @@
 // App.jsx
 import emailjs from "emailjs-com";
 import React, { useState } from "react";
+import Gallery from './gallery';
 
 import { motion } from "framer-motion";
 import {
@@ -35,6 +36,7 @@ const COMPANY = {
   name: "Bumble Bee Corporate Solutions Private Limited",
   short: "BumbleBee",
   tagline: "Redefining learning empowering world",
+  aboutbb: "Bumble Bee is where learning meets opportunity. From corporate training to recruitment and student development, we shape careers and strengthen organizations for the future.",
   about:
     "Bumble Bee is a specialized Corporate Training and Human Resource Recruitment Consultancy committed to empowering organizations with the right people and the right skills. With strong expertise in the Banking and Financial Services Industry (BFSI) and diverse other sectors, we bridge the gap between talent development and talent acquisition, enabling businesses to achieve sustainable growth.",
   vision:
@@ -118,32 +120,33 @@ const COMPANY = {
     { quote: "Their recruitment expertise is unmatched — quality hires, fast turnaround.", name: "RenewBuy" },
   ],
   leaders: [
-  {
-    name: "Jiju K",
-    title: "CEO",
-    image: "/leaders/jiju.jpeg",
-    summary:
-      "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
-    highlights: [
-      "MBA (Finance) – GRD Institute of Management",
-      "AIII (Associate of Insurance Institute of India)",
-      "500+ workshops & Train-the-Trainer certified",
-      "Pan-India training awards & industry accolades",
-    ],
-  },
-  {
-    name: "Rakesh Roshan R",
-    title: "CFO & Co-Founder",
-    image: "/leaders/rakesh.jpeg",
-    summary:
-      "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
-    highlights: [
-      "Science Graduate – Calicut University",
-      "Proven track record in sales & business development",
-      "International exposure & branch leadership experience",
-    ],
-  },
-],
+    {
+      name: "Jiju K",
+      title: "Chief Executive Officer",
+      image: "/leaders/jiju.jpeg",
+      summary:
+        "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Capital, HDFC Bank, TATA AIA Life, Edelweiss Life Insurance and Canara HSBC.",
+      highlights: [
+        "MBA (Finance) – Bharathiyar University Coimbatore",
+        "AIII (Associate of Insurance Institute of India)",
+        "500+ workshops conducted",
+        "Train-the-Trainer certified",
+        "Pan-India training awards & industry accolades",
+      ],
+    },
+    {
+      name: "Rakesh Roshan R",
+      title: "CFO & Co-Founder",
+      image: "/leaders/rakesh.jpeg",
+      summary:
+        "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
+      highlights: [
+        "Science Graduate – Calicut University",
+        "Proven track record in sales & business development",
+        "International exposure & branch leadership experience",
+      ],
+    },
+  ],
 };
 
 // ---------- App ----------
@@ -158,7 +161,8 @@ export default function App() {
         <Services />
         <Industries />
         <Leadership />
-        <Testimonials />
+        {/* <Testimonials /> */}
+         <Gallery />
         <Careers />
         <Contact />
       </main>
@@ -170,7 +174,7 @@ export default function App() {
 /* ---------------- TOPBAR / NAV ---------------- */
 function Topbar() {
   return (
-    <header className="fixed w-full z-50 top-0 bg-transparent">
+    <><header className="fixed w-full z-50 top-0 bg-transparent">
       <div className="backdrop-blur-md bg-black/30 border-b border-white/6">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <a href="#hero" className="flex items-center gap-3">
@@ -179,7 +183,7 @@ function Topbar() {
             </div>
             <div className="text-white font-semibold leading-tight">
               <div className="text-base">{COMPANY.short} </div>
-              <div className="text-xs text-slate-300 -mt-0.5">Corporate Solutions Pvt. Ltd.</div>
+              <div className="text-xs text-slate-300 -mt-0.5">Corporate Solutions LLP</div>
             </div>
           </a>
 
@@ -199,6 +203,7 @@ function Topbar() {
         </div>
       </div>
     </header>
+   </>
   );
 }
 
@@ -230,16 +235,24 @@ function Hero() {
             </div>
           </motion.div>
 
-          <motion.h1 className="font-extrabold leading-tight text-4xl md:text-6xl" variants={fadeUp}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-500">
+          <motion.h2
+            className="font-extrabold leading-tight text-4xl md:text-6xl"
+            variants={fadeUp}
+          >
+
+            {/* tagline — now controlled */}
+            <span className="text-2xl md:text-3xl text-yellow-400 block font-[cursive]">
               {COMPANY.tagline}
             </span>
-            <br />
+
+
+            {/* main headline */}
             Transforming Talent into Impactful Careers
-          </motion.h1>
+          </motion.h2>
+
 
           <motion.p className="text-slate-300 text-lg" variants={fadeUp}>
-            {COMPANY.about}
+            {COMPANY.aboutbb}
           </motion.p>
 
           <motion.div className="flex gap-4" variants={fadeUp}>
@@ -458,11 +471,11 @@ function Leadership() {
                   <Award size={26} />
                 </div>
                 <div>
-                   <img
-    src={l.image}
-    alt={l.name}
-    className="w-20 h-20 rounded-full object-cover mb-4"
-  />
+                  <img
+                    src={l.image}
+                    alt={l.name}
+                    className="w-20 h-20 rounded-full object-cover mb-4"
+                  />
                   <h3 className="text-xl font-bold">{l.name}</h3>
                   <div className="text-yellow-300 text-sm">{l.title}</div>
                   <p className="mt-3 text-slate-300 text-sm">{l.summary}</p>
@@ -480,24 +493,24 @@ function Leadership() {
 }
 
 /* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  return (
-    <section id="testimonials" className="py-20 bg-black text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Testimonials & Case Snippets</motion.h2>
+// function Testimonials() {
+//   return (
+//     <section id="testimonials" className="py-20 bg-black text-white">
+//       <div className="max-w-6xl mx-auto px-6">
+//         <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Testimonials & Case Snippets</motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
-          {COMPANY.testimonials.map((t, i) => (
-            <motion.blockquote key={i} className="p-6 rounded-xl bg-gradient-to-br from-white/4 to-white/2 border border-white/6" initial="hidden" whileInView="show" variants={fadeUp}>
-              <p className="text-slate-200">“{t.quote}”</p>
-              <footer className="mt-4 text-yellow-300 font-semibold">— {t.name}</footer>
-            </motion.blockquote>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="grid md:grid-cols-2 gap-6 mt-8">
+//           {COMPANY.testimonials.map((t, i) => (
+//             <motion.blockquote key={i} className="p-6 rounded-xl bg-gradient-to-br from-white/4 to-white/2 border border-white/6" initial="hidden" whileInView="show" variants={fadeUp}>
+//               <p className="text-slate-200">“{t.quote}”</p>
+//               <footer className="mt-4 text-yellow-300 font-semibold">— {t.name}</footer>
+//             </motion.blockquote>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ---------------- CAREERS ---------------- */
 function Careers() {
