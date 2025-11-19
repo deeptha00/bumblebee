@@ -34,7 +34,7 @@ const cardHover = { scale: 1.03, y: -6, transition: { duration: 0.25 } };
 const COMPANY = {
   name: "Bumble Bee Corporate Solutions Private Limited",
   short: "BumbleBee",
-  tagline: "Redefining learning — empowering growth",
+  tagline: "Redefining learning empowering world",
   about:
     "Bumble Bee is a specialized Corporate Training and Human Resource Recruitment Consultancy committed to empowering organizations with the right people and the right skills. With strong expertise in the Banking and Financial Services Industry (BFSI) and diverse other sectors, we bridge the gap between talent development and talent acquisition, enabling businesses to achieve sustainable growth.",
   vision:
@@ -117,31 +117,34 @@ const COMPANY = {
     { quote: "Bumble Bee helped us transform frontline sales capability with measurable results.", name: "ICICI Bank" },
     { quote: "Their recruitment expertise is unmatched — quality hires, fast turnaround.", name: "RenewBuy" },
   ],
-  leaders: [
-    {
-      name: "Jiju K",
-      title: "CEO",
-      summary:
-        "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
-      highlights: [
-        "MBA (Finance) – GRD Institute of Management",
-        "AIII (Associate of Insurance Institute of India)",
-        "500+ workshops & Train-the-Trainer certified",
-        "Pan-India training awards & industry accolades",
-      ],
-    },
-    {
-      name: "Rakesh Roshan R",
-      title: "CFO & Co-Founder",
-      summary:
-        "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
-      highlights: [
-        "Science Graduate – Calicut University",
-        "Proven track record in sales & business development",
-        "International exposure & branch leadership experience",
-      ],
-    },
-  ],
+  leaders = [
+  {
+    name: "Jiju K",
+    title: "CEO",
+    image: "/jiju.jpeg", // <-- image from public folder
+    summary:
+      "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
+    highlights: [
+      "MBA (Finance) – GRD Institute of Management",
+      "AIII (Associate of Insurance Institute of India)",
+      "500+ workshops & Train-the-Trainer certified",
+      "Pan-India training awards & industry accolades",
+    ],
+  },
+  {
+    name: "Rakesh Roshan R",
+    title: "CFO & Co-Founder",
+    image: "/rakesh.jpeg", // <-- image from public folder
+    summary:
+      "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
+    highlights: [
+      "Science Graduate – Calicut University",
+      "Proven track record in sales & business development",
+      "International exposure & branch leadership experience",
+    ],
+  },
+];
+
 };
 
 // ---------- App ----------
