@@ -121,7 +121,7 @@ const COMPANY = {
   {
     name: "Jiju K",
     title: "CEO",
-    image: "/jiju.jpeg",
+    image: "/leaders/jiju.jpeg",
     summary:
       "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
     highlights: [
@@ -134,7 +134,7 @@ const COMPANY = {
   {
     name: "Rakesh Roshan R",
     title: "CFO & Co-Founder",
-    image: "/rakesh.jpeg",
+    image: "/leaders/rakesh.jpeg",
     summary:
       "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
     highlights: [
@@ -458,6 +458,11 @@ function Leadership() {
                   <Award size={26} />
                 </div>
                 <div>
+                   <img
+    src={l.image}
+    alt={l.name}
+    className="w-20 h-20 rounded-full object-cover mb-4"
+  />
                   <h3 className="text-xl font-bold">{l.name}</h3>
                   <div className="text-yellow-300 text-sm">{l.title}</div>
                   <p className="mt-3 text-slate-300 text-sm">{l.summary}</p>
