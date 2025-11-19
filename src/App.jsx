@@ -117,11 +117,11 @@ const COMPANY = {
     { quote: "Bumble Bee helped us transform frontline sales capability with measurable results.", name: "ICICI Bank" },
     { quote: "Their recruitment expertise is unmatched — quality hires, fast turnaround.", name: "RenewBuy" },
   ],
-  leaders = [
+  leaders: [
   {
     name: "Jiju K",
     title: "CEO",
-    image: "/jiju.jpeg", // <-- image from public folder
+    image: "/jiju.jpeg",
     summary:
       "A seasoned corporate training professional with 22+ years in the Banking and Financial Services Industry (BFSI). Experienced across ICICI Bank, Aditya Birla Life Insurance, AVIVA, HDFC Bank, TATA AIA Life Insurance, Edelweiss Life Insurance and Canara HSBC Life Insurance.",
     highlights: [
@@ -134,7 +134,7 @@ const COMPANY = {
   {
     name: "Rakesh Roshan R",
     title: "CFO & Co-Founder",
-    image: "/rakesh.jpeg", // <-- image from public folder
+    image: "/rakesh.jpeg",
     summary:
       "Extensive experience across banking, life insurance, and health insurance. Former roles include Branch Operations and senior positions in RenewBuy & Care Health Insurance.",
     highlights: [
@@ -143,8 +143,7 @@ const COMPANY = {
       "International exposure & branch leadership experience",
     ],
   },
-];
-
+],
 };
 
 // ---------- App ----------
