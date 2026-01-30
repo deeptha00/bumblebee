@@ -159,6 +159,7 @@ export default function Home() {
         <About />
         <KeyChallenges />
         <Services />
+        <UpcomingWorkshop />
         <Industries />
         <Leadership />
         {/* <Testimonials /> */}
@@ -192,6 +193,7 @@ function Topbar() {
             <a href="#services" className="hover:text-yellow-400 transition">Services</a>
             <a href="#industries" className="hover:text-yellow-400 transition">Industries</a>
             <a href="#leadership" className="hover:text-yellow-400 transition">Leadership</a>
+            <a href="/#/workshop" className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full text-xs font-bold animate-pulse">Live Workshop</a>
             <a href="#contact" className="hover:text-yellow-400 transition">Contact</a>
             <a
               href="#contact"
@@ -255,19 +257,20 @@ function Hero() {
             {COMPANY.aboutbb}
           </motion.p>
 
-          <motion.div className="flex gap-4" variants={fadeUp}>
+          <motion.div className="flex flex-wrap gap-4" variants={fadeUp}>
+            <a
+              href="/#/workshop"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold shadow-lg hover:scale-[1.03] transition border-2 border-yellow-400"
+            >
+              Upcoming Workshop
+              <span className="flex h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
+            </a>
             <a
               href="#services"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow-lg hover:scale-[1.03] transition"
             >
               Explore Services
               <ArrowIcon />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center px-6 py-3 rounded-full border border-white/10 text-white hover:bg-white/5 transition"
-            >
-              Get in touch
             </a>
           </motion.div>
         </motion.div>
@@ -426,6 +429,62 @@ function Services() {
     </section>
   );
 }
+
+/* ---------------- UPCOMING WORKSHOP ---------------- */
+function UpcomingWorkshop() {
+  return (
+    <section id="workshop-cta" className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+          <motion.div
+            className="md:max-w-xl"
+            initial="hidden"
+            whileInView="show"
+            variants={fadeUp}
+          >
+            <div className="inline-block px-3 py-1 rounded-full bg-black/10 text-sm font-bold mb-4 uppercase tracking-wider">Limited Seats Available</div>
+            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+              Personal Finance: <br />
+              <span className="italic opacity-80 text-3xl md:text-4xl block mt-2">The Untold Story of Behavior</span>
+            </h2>
+            <p className="text-lg font-medium mb-8 opacity-80">
+              Join Jiju K’s exclusive masterclass on bridging the gap between financial knowing and financial doing. Learn the behavioral hacks to fix lifestyle inflation and master your wealth.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="/#/workshop"
+                className="px-8 py-4 rounded-full bg-black text-white font-black text-lg hover:scale-105 transition transform active:scale-95 shadow-xl"
+              >
+                Book My Seat — ₹499
+              </a>
+              <div className="flex items-center gap-2 text-sm font-bold">
+                <Users size={18} />
+                <span>87/100 Seats Filled</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="absolute -inset-4 bg-black/10 blur-2xl rounded-full" />
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-black/5 shadow-2xl rotate-3">
+              <img src="/images/jiju.jpeg" alt="Jiju K" className="w-full h-full object-cover" />
+              <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black text-white">
+                <div className="font-bold">Jiju K</div>
+                <div className="text-xs opacity-70">BFSI Expert & CEO</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 /* ---------------- INDUSTRIES ---------------- */
 function Industries() {
