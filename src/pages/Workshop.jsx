@@ -175,7 +175,7 @@ function LandingPage({ onStart }) {
                         <div className="absolute inset-0 bg-yellow-400/20 blur-[100px] rounded-full group-hover:bg-yellow-400/30 transition-all duration-700" />
                         <div className="relative h-full w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                             <img
-                                src="/images/workshop-bridge.png"
+                                src="/images/knowing-doing.png"
                                 alt="Knowing to Doing Bridge"
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s]"
                             />
