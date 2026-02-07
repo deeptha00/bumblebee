@@ -82,6 +82,7 @@ export default function Workshop() {
                         key="payment"
                         onSuccess={handlePaymentSuccess}
                         onBack={() => setStep("REGISTER")}
+                        formData={formData}
                     />
                 )}
 
@@ -461,16 +462,91 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
     );
 }
 
-function PaymentStep({ onSuccess, onBack }) {
+function PaymentStep({ onSuccess, onBack, formData }) {
     const [loading, setLoading] = useState(false);
 
-    const simulatePayment = () => {
+    const handleRazorpay = async () => {
         setLoading(true);
-        // Simulate payment gateway delay
-        setTimeout(() => {
+
+        try {
+            // 1. Create order on the server
+            const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/create-order`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    amount: 199, // Amount in INR
+                    currency: "INR",
+                    receipt: `receipt_${Date.now()}`
+                })
+            });
+
+            const order = await response.json();
+
+            if (!order.id) {
+                throw new Error("Failed to create order");
+            }
+
+            const options = {
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_YOUR_KEY_HERE",
+                amount: order.amount,
+                currency: order.currency,
+                name: "BumbleBee Workshop",
+                description: "Personal Finance: The Untold Story",
+                image: logo,
+                order_id: order.id, // REAL Order ID from server
+                handler: async function (response) {
+                    try {
+                        // 2. Verify payment on the server
+                        const verifyRes = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/verify-payment`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature
+                            })
+                        });
+
+                        const result = await verifyRes.json();
+
+                        if (result.status === "success") {
+                            setLoading(false);
+                            onSuccess();
+                        } else {
+                            alert("Payment verification failed! Please contact support.");
+                            setLoading(false);
+                        }
+                    } catch (err) {
+                        console.error("Verification error:", err);
+                        alert("Error verifying payment.");
+                        setLoading(false);
+                    }
+                },
+                prefill: {
+                    name: formData.name,
+                    email: formData.email,
+                    contact: formData.whatsapp,
+                },
+                notes: {
+                    workshop: "Behavioral Finance"
+                },
+                theme: {
+                    color: "#facc15",
+                },
+                modal: {
+                    ondismiss: function () {
+                        setLoading(false);
+                    }
+                }
+            };
+
+            const rzp = new window.Razorpay(options);
+            rzp.open();
+        } catch (error) {
+            console.error("Payment initiation error:", error);
+            alert("Could not start payment. Is the server running?");
             setLoading(false);
-            onSuccess();
-        }, 2000);
+        }
     };
 
     return (
@@ -480,40 +556,40 @@ function PaymentStep({ onSuccess, onBack }) {
             exit={{ opacity: 0, scale: 0.95 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
         >
-            <div className="w-full max-w-md bg-[#111] border border-white/10 rounded-[2.5rem] p-10 shadow-2xl text-center">
+            <div className="w-full max-w-md bg-[#111] border border-white/10 rounded-[2.5rem] p-10 shadow-2xl text-center relative">
+                <button onClick={onBack} disabled={loading} className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/5 text-slate-400 hover:text-white transition">
+                    <X size={20} />
+                </button>
+
                 <div className="w-20 h-20 rounded-full bg-yellow-400/10 text-yellow-400 flex items-center justify-center mx-auto mb-8">
                     <TrendingUp size={40} />
                 </div>
 
                 <h2 className="text-3xl font-bold mb-4">Complete Payment</h2>
-                <p className="text-slate-400 mb-8">Secure your seat for the workshop. <br /><span className="text-white font-bold text-2xl">₹999</span></p>
+                <p className="text-slate-400 mb-8">Secure your seat for the workshop. <br /><span className="text-white font-bold text-2xl">₹199</span></p>
 
                 <div className="space-y-4 mb-10">
                     <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                         <span className="text-slate-400">Workshop Fee</span>
-                        <span className="font-bold">₹999.00</span>
+                        <span className="font-bold">₹199.00</span>
                     </div>
-                    <p className="text-xs text-slate-500 italic">Redirecting to Razorpay in production...</p>
                 </div>
 
                 <button
-                    onClick={simulatePayment}
+                    onClick={handleRazorpay}
                     disabled={loading}
                     className="w-full py-5 rounded-2xl bg-yellow-400 text-black font-black text-lg flex items-center justify-center gap-3 hover:bg-yellow-300 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {loading ? (
                         <div className="w-6 h-6 border-4 border-black/30 border-t-black rounded-full animate-spin" />
                     ) : (
-                        <>Pay Now</>
+                        <>Pay with Razorpay</>
                     )}
                 </button>
 
-                <button
-                    onClick={onBack}
-                    className="mt-6 text-slate-500 hover:text-white transition"
-                >
-                    Back to Details
-                </button>
+                <p className="mt-6 text-xs text-slate-500">
+                    Secure payments powered by Razorpay.
+                </p>
             </div>
         </motion.div>
     );
@@ -551,7 +627,7 @@ function ThankYouPage() {
                     </div>
 
                     <a
-                        href="https://whatsapp.com/group/your-link-here" // USER should replace this
+                        href="https://chat.whatsapp.com/CN068wOTEha69FgqGipy7i?mode=gi_t" // USER should replace this
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-[#25D366] text-white font-black text-xl hover:scale-105 transition-all shadow-xl shadow-green-500/20"
