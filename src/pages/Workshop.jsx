@@ -487,7 +487,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
             }
 
             const options = {
-                key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_YOUR_KEY_HERE",
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_live_SDIsEZfHBDTF6a",
                 amount: order.amount,
                 currency: order.currency,
                 name: "BumbleBee Workshop",
