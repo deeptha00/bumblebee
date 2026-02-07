@@ -503,8 +503,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
                             body: JSON.stringify({
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,
-                                razorpay_signature: response.razorpay_signature,
-                                userData: formData // Pass registration data
+                                razorpay_signature: response.razorpay_signature
                             })
                         });
 
