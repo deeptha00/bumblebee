@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bumblebeeindia.com/sitemap.xml
