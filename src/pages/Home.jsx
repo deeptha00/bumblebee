@@ -455,7 +455,7 @@ function UpcomingWorkshop() {
                 href="/#/workshop"
                 className="px-8 py-4 rounded-full bg-black text-white font-black text-lg hover:scale-105 transition transform active:scale-95 shadow-xl"
               >
-                Book My Seat — ₹499
+                Book My Seat — ₹199
               </a>
               <div className="flex items-center gap-2 text-sm font-bold">
                 <Users size={18} />

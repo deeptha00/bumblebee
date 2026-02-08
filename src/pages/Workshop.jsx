@@ -474,7 +474,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    amount: 1, // Amount in INR
+                    amount: 199, // Amount in INR
                     currency: "INR",
                     receipt: `receipt_${Date.now()}`
                 })
@@ -566,12 +566,12 @@ function PaymentStep({ onSuccess, onBack, formData }) {
                 </div>
 
                 <h2 className="text-3xl font-bold mb-4">Complete Payment</h2>
-                <p className="text-slate-400 mb-8">Secure your seat for the workshop. <br /><span className="text-white font-bold text-2xl">₹1</span></p>
+                <p className="text-slate-400 mb-8">Secure your seat for the workshop. <br /><span className="text-white font-bold text-2xl">₹199</span></p>
 
                 <div className="space-y-4 mb-10">
                     <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                         <span className="text-slate-400">Workshop Fee</span>
-                        <span className="font-bold">₹1.00</span>
+                        <span className="font-bold">₹199.00</span>
                     </div>
                 </div>
 
