@@ -180,7 +180,7 @@ function Topbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <a href="#hero" className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-lg overflow-hidden shadow-md bg-white p-1">
-              <img src={logo} alt="Bumble Bee logo" className="w-full h-full object-contain" />
+              <img src={logo} alt="BumbleBee Corporate Solutions Logo" className="w-full h-full object-contain" />
             </div>
             <div className="text-white font-semibold leading-tight">
               <div className="text-base">{COMPANY.short} </div>
@@ -237,7 +237,7 @@ function Hero() {
             </div>
           </motion.div>
 
-          <motion.h2
+          <motion.h1
             className="font-extrabold leading-tight text-4xl md:text-6xl"
             variants={fadeUp}
           >
@@ -250,7 +250,7 @@ function Hero() {
 
             {/* main headline */}
             Transforming Talent into Impactful Careers
-          </motion.h2>
+          </motion.h1>
 
 
           <motion.p className="text-slate-300 text-lg" variants={fadeUp}>
