@@ -15,6 +15,11 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
+// Health check route
+app.get('/', (req, res) => {
+    res.json({ status: 'success', message: 'BumbleBee Server is running' });
+});
+
 // Endpoint to create an order
 app.post('/create-order', async (req, res) => {
     try {

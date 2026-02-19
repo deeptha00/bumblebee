@@ -32,6 +32,20 @@ const stagger = {
 export default function Workshop() {
     const [step, setStep] = useState("LANDING"); // LANDING, REGISTER, PAYMENT, SUCCESS
     const [formData, setFormData] = useState({ name: "", email: "", whatsapp: "" });
+    const [serverAwake, setServerAwake] = useState(false);
+
+    // Wake up the Render server as soon as the page loads
+    React.useEffect(() => {
+        const wakeServer = async () => {
+            try {
+                await fetch(import.meta.env.VITE_API_URL || 'http://localhost:5000');
+                setServerAwake(true);
+            } catch (err) {
+                console.log("Server is still waking up...");
+            }
+        };
+        wakeServer();
+    }, []);
 
     const handleRegister = (e) => {
         e.preventDefault();
