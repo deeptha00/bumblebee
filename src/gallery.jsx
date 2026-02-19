@@ -5,26 +5,50 @@ const images = [
   {
     id: 1,
     url: "/images/image-1.jpeg",
-   
+
   },
   {
     id: 2,
     url: "/images/image-2.jpeg",
-    
+
   },
   {
     id: 3,
     url: "/images/image-3.jpeg",
-   
+
   },
   {
     id: 4,
     url: "/images/image-4.jpeg",
-    
+
   },
   {
     id: 5,
     url: "/images/image-5.jpeg",
+  },
+  {
+    id: 6,
+    url: "/images/image-6.jpeg",
+  },
+  {
+    id: 7,
+    url: "/images/image-7.jpeg",
+  },
+  {
+    id: 8,
+    url: "/images/image-8.jpeg",
+  },
+  {
+    id: 9,
+    url: "/images/image-9.jpeg",
+  },
+  {
+    id: 10,
+    url: "/images/image-10.jpeg",
+  },
+  {
+    id: 11,
+    url: "/images/image-11.jpeg",
   }
 ];
 
@@ -101,7 +125,7 @@ export default function Gallery() {
             >
               ×
             </button>
-            
+
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}

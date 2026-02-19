@@ -39,6 +39,13 @@ export default function Workshop() {
     };
 
     const handlePaymentSuccess = () => {
+        // Track the purchase event for Facebook ads
+        if (window.fbq) {
+            window.fbq('track', 'Purchase', {
+                value: 199.00,
+                currency: 'INR'
+            });
+        }
         setStep("SUCCESS");
     };
 
