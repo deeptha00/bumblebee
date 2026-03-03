@@ -9,6 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/workshop" element={<Workshop />} />
+        {/* Catch-all route to prevent white screen on hash changes */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   );

@@ -150,6 +150,14 @@ const COMPANY = {
 };
 
 // ---------- App ----------
+const scrollToSection = (e, id) => {
+  e.preventDefault();
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 export default function Home() {
   return (
     <div className="antialiased">
@@ -178,7 +186,7 @@ function Topbar() {
     <><header className="fixed w-full z-50 top-0 bg-transparent">
       <div className="backdrop-blur-md bg-black/30 border-b border-white/6">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          <a href="#hero" className="flex items-center gap-3">
+          <a href="#hero" onClick={(e) => scrollToSection(e, "hero")} className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-lg overflow-hidden shadow-md bg-white p-1">
               <img src={logo} alt="BumbleBee Corporate Solutions Logo" className="w-full h-full object-contain" />
             </div>
@@ -189,14 +197,15 @@ function Topbar() {
           </a>
 
           <nav className="hidden lg:flex items-center gap-6 text-sm text-slate-200">
-            <a href="#about" className="hover:text-yellow-400 transition">About</a>
-            <a href="#services" className="hover:text-yellow-400 transition">Services</a>
-            <a href="#industries" className="hover:text-yellow-400 transition">Industries</a>
-            <a href="#leadership" className="hover:text-yellow-400 transition">Leadership</a>
+            <a href="#about" onClick={(e) => scrollToSection(e, "about")} className="hover:text-yellow-400 transition">About</a>
+            <a href="#services" onClick={(e) => scrollToSection(e, "services")} className="hover:text-yellow-400 transition">Services</a>
+            <a href="#industries" onClick={(e) => scrollToSection(e, "industries")} className="hover:text-yellow-400 transition">Industries</a>
+            <a href="#leadership" onClick={(e) => scrollToSection(e, "leadership")} className="hover:text-yellow-400 transition">Leadership</a>
             <a href="/#/workshop" className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full text-xs font-bold animate-pulse">Live Workshop</a>
-            <a href="#contact" className="hover:text-yellow-400 transition">Contact</a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="hover:text-yellow-400 transition">Contact</a>
             <a
               href="#contact"
+              onClick={(e) => scrollToSection(e, "contact")}
               className="ml-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400 text-black font-semibold shadow"
             >
               Let's Talk
@@ -267,6 +276,7 @@ function Hero() {
             </a>
             <a
               href="#services"
+              onClick={(e) => scrollToSection(e, "services")}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow-lg hover:scale-[1.03] transition"
             >
               Explore Services
@@ -299,8 +309,8 @@ function Hero() {
           </div>
 
           <div className="mt-6 flex gap-3">
-            <a href="#careers" className="px-4 py-2 rounded-full bg-transparent border border-white/10 text-white">Join Our Hive</a>
-            <a href="#contact" className="px-4 py-2 rounded-full bg-yellow-400 text-black font-semibold">Enquire</a>
+            <a href="#careers" onClick={(e) => scrollToSection(e, "careers")} className="px-4 py-2 rounded-full bg-transparent border border-white/10 text-white">Join Our Hive</a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="px-4 py-2 rounded-full bg-yellow-400 text-black font-semibold">Enquire</a>
           </div>
         </motion.div>
       </div>
@@ -582,7 +592,7 @@ function Careers() {
         </motion.p>
 
         <motion.div className="mt-8 flex justify-center" initial="hidden" whileInView="show" variants={fadeUp}>
-          <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow">Explore Opportunities <Briefcase size={16} /></a>
+          <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow">Explore Opportunities <Briefcase size={16} /></a>
         </motion.div>
       </div>
     </section>
