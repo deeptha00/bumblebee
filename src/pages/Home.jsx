@@ -266,7 +266,7 @@ function Hero() {
             {COMPANY.aboutbb}
           </motion.p>
 
-          <motion.div className="flex flex-wrap gap-4" variants={fadeUp}>
+          <motion.div className="flex flex-wrap items-center gap-4" variants={fadeUp}>
             <a
               href="/#/workshop"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-bold shadow-lg hover:scale-[1.03] transition border-2 border-yellow-400"
@@ -274,10 +274,14 @@ function Hero() {
               Upcoming Workshop
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
             </a>
+            <div className="flex flex-col">
+              <span className="text-yellow-400 font-bold text-sm">March 12, 2026</span>
+              <span className="text-slate-400 text-xs font-medium">7:00 PM — 8:30 PM IST</span>
+            </div>
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "services")}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow-lg hover:scale-[1.03] transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow-lg hover:scale-[1.03] transition px-6"
             >
               Explore Services
               <ArrowIcon />
@@ -475,7 +479,7 @@ function UpcomingWorkshop() {
                 href="/#/workshop"
                 className="px-8 py-4 rounded-full bg-black text-white font-black text-lg hover:scale-105 transition transform active:scale-95 shadow-xl"
               >
-                Book My Seat — ₹1
+                Book My Seat — ₹199
               </a>
               <div className="flex items-center gap-2 text-sm font-bold">
                 <Users size={18} />
