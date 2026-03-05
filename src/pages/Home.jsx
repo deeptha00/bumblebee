@@ -460,6 +460,16 @@ function UpcomingWorkshop() {
             <p className="text-lg font-medium mb-8 opacity-80">
               Join Jiju K’s exclusive masterclass on bridging the gap between financial knowing and financial doing. Learn the behavioral hacks to fix lifestyle inflation and master your wealth.
             </p>
+            <div className="flex gap-4 mb-8">
+              <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
+                <div className="text-[10px] uppercase font-bold opacity-50">Date</div>
+                <div className="font-bold">12th March 2026</div>
+              </div>
+              <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
+                <div className="text-[10px] uppercase font-bold opacity-50">Time</div>
+                <div className="font-bold">7:00 PM - 8:30 PM</div>
+              </div>
+            </div>
             <div className="flex flex-wrap gap-4">
               <a
                 href="/#/workshop"

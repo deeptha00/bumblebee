@@ -151,15 +151,22 @@ function LandingPage({ onStart }) {
                         But something always gets in the way. It's not a lack of discipline—it's a lack of <span className="text-white font-semibold">behavioral design</span>.
                     </motion.p>
 
-                    <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-8">
+                        <div className="flex flex-col items-center sm:items-start gap-2">
+                            <div className="flex items-center gap-2 text-yellow-400 font-bold">
+                                <TrendingUp size={20} />
+                                <span className="text-xl">12th March, 2026</span>
+                            </div>
+                            <div className="text-slate-500 font-medium">7:00 PM — 8:30 PM IST</div>
+                        </div>
+                        <div className="h-px w-20 bg-white/10 hidden sm:block"></div>
                         <button
                             onClick={onStart}
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-yellow-400 text-black font-extrabold text-lg flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all transform hover:scale-105"
+                            className="w-full sm:w-auto px-10 py-5 rounded-full bg-yellow-400 text-black font-black text-xl flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-2xl shadow-yellow-400/20"
                         >
-                            Join the Workshop
-                            <ArrowRight size={20} />
+                            Reserve My Spot
+                            <ArrowRight size={24} />
                         </button>
-                        <p className="text-slate-500 text-sm">Join Personal Finance: The Untold Story</p>
                     </motion.div>
                 </div>
             </section>
@@ -422,7 +429,10 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
                 <div className="p-8 md:p-12">
                     <div className="mb-10">
                         <h2 className="text-3xl font-bold mb-2">Reserve Your Spot</h2>
-                        <p className="text-slate-400">Fill in your details to proceed to payment.</p>
+                        <div className="flex flex-wrap gap-4 mt-4">
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 12th March</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 7:00 PM - 8:30 PM</div>
+                        </div>
                     </div>
 
                     <form onSubmit={onSubmit} className="space-y-6">
