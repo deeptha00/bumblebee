@@ -651,21 +651,32 @@ function ThankYouPage() {
                     <p className="text-xl text-slate-400">Your registration for <span className="text-white font-bold italic">Personal Finance: The Untold Story</span> is successful.</p>
                 </div>
 
-                <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 space-y-8">
-                    <div className="space-y-2">
-                        <h3 className="text-2xl font-bold text-green-400">Step Final: Join the Community</h3>
-                        <p className="text-slate-300">Join our exclusive WhatsApp group for session link, reminders, and future updates.</p>
+                <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-green-500/10 to-green-500/5 border-2 border-green-500/30 space-y-8 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 px-4 py-1 bg-green-500 text-black text-[10px] font-black uppercase tracking-widest">Action Required</div>
+
+                    <div className="space-y-4">
+                        <h3 className="text-3xl font-black text-white uppercase tracking-tight">
+                            <span className="text-green-500 italic font-serif lowercase">Almost</span> Done!
+                        </h3>
+                        <p className="text-slate-300 text-lg leading-relaxed">
+                            To receive the <span className="text-white font-bold">Session Link</span> and <span className="text-white font-bold">Workshop Materials</span>, you <span className="text-green-400 font-bold underline underline-offset-4">MUST</span> join the exclusive WhatsApp group below.
+                        </p>
                     </div>
 
                     <a
-                        href="https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg?mode=gi_t" // USER should replace this
+                        href="https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg?mode=gi_t"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-[#25D366] text-white font-black text-xl hover:scale-105 transition-all shadow-xl shadow-green-500/20"
+                        className="inline-flex items-center justify-center gap-4 w-full px-10 py-6 rounded-3xl bg-[#25D366] text-white font-black text-2xl hover:scale-[1.02] transition-all shadow-2xl shadow-green-500/40 group relative overflow-hidden"
                     >
-                        <MessageCircle size={28} />
-                        Join WhatsApp Group
+                        <motion.div
+                            className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
+                        />
+                        <MessageCircle size={32} />
+                        <span>JOIN WHATSAPP GROUP</span>
                     </a>
+
+                    <p className="text-green-500/60 text-xs font-bold uppercase tracking-widest">All further details will be shared here only</p>
                 </div>
 
                 <p className="text-slate-500">A confirmation email has also been sent to your inbox.</p>
