@@ -33,6 +33,7 @@ export default function Workshop() {
     const [step, setStep] = useState("LANDING"); // LANDING, REGISTER, PAYMENT, SUCCESS
     const [formData, setFormData] = useState({ name: "", email: "", whatsapp: "" });
     const [serverAwake, setServerAwake] = useState(false);
+    const [whatsappLink, setWhatsappLink] = useState("");
 
     // Wake up the Render server as soon as the page loads
     React.useEffect(() => {
@@ -52,7 +53,8 @@ export default function Workshop() {
         setStep("PAYMENT");
     };
 
-    const handlePaymentSuccess = () => {
+    const handlePaymentSuccess = (link) => {
+        if (link) setWhatsappLink(link);
         // Track the purchase event for Facebook ads
         if (window.fbq) {
             window.fbq('track', 'Purchase', {
@@ -108,7 +110,7 @@ export default function Workshop() {
                 )}
 
                 {step === "SUCCESS" && (
-                    <ThankYouPage key="success" />
+                    <ThankYouPage key="success" whatsappLink={whatsappLink} />
                 )}
             </AnimatePresence>
 
@@ -518,7 +520,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
             }
 
             const options = {
-                key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_live_SDIsEZfHBDTF6a",
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID,
                 amount: order.amount,
                 currency: order.currency,
                 name: "BumbleBee Workshop",
@@ -542,7 +544,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
 
                         if (result.status === "success") {
                             setLoading(false);
-                            onSuccess();
+                            onSuccess(result.whatsappLink);
                         } else {
                             alert("Payment verification failed! Please contact support.");
                             setLoading(false);
@@ -626,7 +628,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
     );
 }
 
-function ThankYouPage() {
+function ThankYouPage({ whatsappLink }) {
     return (
         <motion.main
             initial={{ opacity: 0, y: 30 }}
@@ -664,7 +666,7 @@ function ThankYouPage() {
                     </div>
 
                     <a
-                        href="https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg?mode=gi_t"
+                        href={whatsappLink || "https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-4 w-full px-10 py-6 rounded-3xl bg-[#25D366] text-white font-black text-2xl hover:scale-[1.02] transition-all shadow-2xl shadow-green-500/40 group relative overflow-hidden"

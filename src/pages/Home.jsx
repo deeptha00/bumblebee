@@ -628,15 +628,15 @@ function Contact() {
 
     emailjs
       .send(
-        "service_0zaib0d", // replace with EmailJS Service ID
-        "template_2jpkq3n", // replace with EmailJS Template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: "bbcllpindia@gmail.com", // fixed recipient
         },
-        "-F98PNeIDQRuoMKPx" // replace with EmailJS Public Key
+        import.meta.env.VITE_EMAILJS_PUBLIC_ID
       )
       .then(
         () => {

@@ -50,7 +50,11 @@ app.post('/verify-payment', (req, res) => {
 
         if (generated_signature === razorpay_signature) {
             // Payment is verified
-            res.json({ status: 'success', message: 'Payment verified successfully' });
+            res.json({
+                status: 'success',
+                message: 'Payment verified successfully',
+                whatsappLink: process.env.WHATSAPP_LINK || "https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg"
+            });
         } else {
             // Payment verification failed
             res.status(400).json({ status: 'failure', message: 'Invalid payment signature' });
