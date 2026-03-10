@@ -275,8 +275,8 @@ function Hero() {
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
             </a>
             <div className="flex flex-col">
-              <span className="text-yellow-400 font-bold text-sm">March 12, 2026</span>
-              <span className="text-slate-400 text-xs font-medium">7:00 PM — 8:30 PM IST</span>
+              <span className="text-yellow-400 font-bold text-sm">March 14, 2026</span>
+              <span className="text-slate-400 text-xs font-medium">10:00 AM — 11:30 AM IST</span>
             </div>
             <a
               href="#services"
@@ -467,11 +467,11 @@ function UpcomingWorkshop() {
             <div className="flex gap-4 mb-8">
               <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
                 <div className="text-[10px] uppercase font-bold opacity-50">Date</div>
-                <div className="font-bold">12th March 2026</div>
+                <div className="font-bold">14th March 2026</div>
               </div>
               <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
                 <div className="text-[10px] uppercase font-bold opacity-50">Time</div>
-                <div className="font-bold">7:00 PM - 8:30 PM</div>
+                <div className="font-bold">10:00 AM - 11:30 AM</div>
               </div>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -479,7 +479,7 @@ function UpcomingWorkshop() {
                 href="/#/workshop"
                 className="px-8 py-4 rounded-full bg-black text-white font-black text-lg hover:scale-105 transition transform active:scale-95 shadow-xl"
               >
-                Book My Seat — ₹1
+                Book My Seat — ₹199
               </a>
               <div className="flex items-center gap-2 text-sm font-bold">
                 <Users size={18} />
