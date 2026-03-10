@@ -629,6 +629,23 @@ function PaymentStep({ onSuccess, onBack, formData }) {
 }
 
 function ThankYouPage({ whatsappLink }) {
+    const [countdown, setCountdown] = React.useState(3);
+
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+            setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+        }, 1000);
+
+        const redirect = setTimeout(() => {
+            window.location.href = whatsappLink || "https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg";
+        }, 3000);
+
+        return () => {
+            clearInterval(timer);
+            clearTimeout(redirect);
+        };
+    }, [whatsappLink]);
+
     return (
         <motion.main
             initial={{ opacity: 0, y: 30 }}
@@ -661,7 +678,8 @@ function ThankYouPage({ whatsappLink }) {
                             <span className="text-green-500 italic font-serif lowercase">Almost</span> Done!
                         </h3>
                         <p className="text-slate-300 text-lg leading-relaxed">
-                            To receive the <span className="text-white font-bold">Session Link</span> and <span className="text-white font-bold">Workshop Materials</span>, you <span className="text-green-400 font-bold underline underline-offset-4">MUST</span> join the exclusive WhatsApp group below.
+                            Redirecting you to WhatsApp in <span className="text-yellow-400 font-bold">{countdown}s</span>... <br />
+                            If you are not redirected, please click the button below.
                         </p>
                     </div>
 
