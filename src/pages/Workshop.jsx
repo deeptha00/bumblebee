@@ -629,21 +629,12 @@ function PaymentStep({ onSuccess, onBack, formData }) {
 }
 
 function ThankYouPage({ whatsappLink }) {
-    const [countdown, setCountdown] = React.useState(3);
-
     React.useEffect(() => {
-        const timer = setInterval(() => {
-            setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
-        }, 1000);
-
         const redirect = setTimeout(() => {
             window.location.href = whatsappLink || "https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg";
-        }, 3000);
+        }, 0);
 
-        return () => {
-            clearInterval(timer);
-            clearTimeout(redirect);
-        };
+        return () => clearTimeout(redirect);
     }, [whatsappLink]);
 
     return (
@@ -678,7 +669,7 @@ function ThankYouPage({ whatsappLink }) {
                             <span className="text-green-500 italic font-serif lowercase">Almost</span> Done!
                         </h3>
                         <p className="text-slate-300 text-lg leading-relaxed">
-                            Redirecting you to WhatsApp in <span className="text-yellow-400 font-bold">{countdown}s</span>... <br />
+                            Redirecting you to WhatsApp now... <br />
                             If you are not redirected, please click the button below.
                         </p>
                     </div>
