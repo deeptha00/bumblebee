@@ -157,9 +157,9 @@ function LandingPage({ onStart }) {
                         <div className="flex flex-col items-center sm:items-start gap-2">
                             <div className="flex items-center gap-2 text-yellow-400 font-bold">
                                 <TrendingUp size={20} />
-                                <span className="text-xl">14th March, 2026</span>
+                                <span className="text-xl">8th April, 2026</span>
                             </div>
-                            <div className="text-slate-500 font-medium">10:00 AM — 11:30 AM IST</div>
+                            <div className="text-slate-500 font-medium">07:30 PM — 09:00 PM IST</div>
                         </div>
                         <div className="h-px w-20 bg-white/10 hidden sm:block"></div>
                         <button
