@@ -432,8 +432,8 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
                     <div className="mb-10">
                         <h2 className="text-3xl font-bold mb-2">Reserve Your Spot</h2>
                         <div className="flex flex-wrap gap-4 mt-4">
-                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 14th March</div>
-                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 10:00 AM - 11:30 AM</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 8th April</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 07:30 PM - 09:00 PM</div>
                         </div>
                     </div>
 
