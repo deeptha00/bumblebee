@@ -157,7 +157,7 @@ function LandingPage({ onStart }) {
                         <div className="flex flex-col items-center sm:items-start gap-2">
                             <div className="flex items-center gap-2 text-yellow-400 font-bold">
                                 <TrendingUp size={20} />
-                                <span className="text-xl">8th April, 2026</span>
+                                <span className="text-xl">13th April, 2026</span>
                             </div>
                             <div className="text-slate-500 font-medium">07:30 PM — 09:00 PM IST</div>
                         </div>
@@ -432,7 +432,7 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
                     <div className="mb-10">
                         <h2 className="text-3xl font-bold mb-2">Reserve Your Spot</h2>
                         <div className="flex flex-wrap gap-4 mt-4">
-                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 8th April</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 13th April</div>
                             <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 07:30 PM - 09:00 PM</div>
                         </div>
                     </div>
@@ -631,7 +631,7 @@ function PaymentStep({ onSuccess, onBack, formData }) {
 function ThankYouPage({ whatsappLink }) {
     React.useEffect(() => {
         const redirect = setTimeout(() => {
-            window.location.href = whatsappLink || "https://chat.whatsapp.com/HzILOikGaHh6UXsvdNCdcg";
+            window.location.href = whatsappLink || "https://chat.whatsapp.com/JtQrGOQisE8DLlC5d5J6DG?mode=gi_t";
         }, 0);
 
         return () => clearTimeout(redirect);

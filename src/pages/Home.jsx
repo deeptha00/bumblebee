@@ -275,7 +275,7 @@ function Hero() {
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
             </a>
             <div className="flex flex-col">
-              <span className="text-yellow-400 font-bold text-sm">April 8, 2026</span>
+              <span className="text-yellow-400 font-bold text-sm">April 13, 2026</span>
               <span className="text-slate-400 text-xs font-medium">07:30 PM — 09:00 PM IST</span>
             </div>
             <a
@@ -467,7 +467,7 @@ function UpcomingWorkshop() {
             <div className="flex gap-4 mb-8">
               <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
                 <div className="text-[10px] uppercase font-bold opacity-50">Date</div>
-                <div className="font-bold">8th April 2026</div>
+                <div className="font-bold">13th April 2026</div>
               </div>
               <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
                 <div className="text-[10px] uppercase font-bold opacity-50">Time</div>
