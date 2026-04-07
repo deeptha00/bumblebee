@@ -641,6 +641,9 @@ function Contact() {
       .then(
         () => {
           setStatus("Message sent successfully ✅");
+          if (window.fbq) {
+            window.fbq('track', 'Contact');
+          }
           setFormData({ name: "", email: "", message: "" });
         },
         () => {

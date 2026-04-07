@@ -50,6 +50,10 @@ export default function Workshop() {
 
     const handleRegister = (e) => {
         e.preventDefault();
+        // Track the InitiateCheckout event for Facebook ads
+        if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout');
+        }
         setStep("PAYMENT");
     };
 
@@ -77,7 +81,10 @@ export default function Workshop() {
                         <span className="font-bold text-xl tracking-tight">BumbleBee <span className="text-yellow-400">Workshop</span></span>
                     </div>
                     <button
-                        onClick={() => setStep("REGISTER")}
+                        onClick={() => {
+                            if (window.fbq) window.fbq('track', 'Lead');
+                            setStep("REGISTER");
+                        }}
                         className="hidden md:block px-6 py-2.5 rounded-full bg-white text-black font-bold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 active:scale-95"
                     >
                         Reserve Your Spot
@@ -163,7 +170,10 @@ function LandingPage({ onStart }) {
                         </div>
                         <div className="h-px w-20 bg-white/10 hidden sm:block"></div>
                         <button
-                            onClick={onStart}
+                            onClick={() => {
+                                if (window.fbq) window.fbq('track', 'Lead');
+                                onStart();
+                            }}
                             className="w-full sm:w-auto px-10 py-5 rounded-full bg-yellow-400 text-black font-black text-xl flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-2xl shadow-yellow-400/20"
                         >
                             Reserve My Spot
@@ -313,7 +323,10 @@ function LandingPage({ onStart }) {
                                     ))}
                                 </ul>
                                 <button
-                                    onClick={onStart}
+                                    onClick={() => {
+                                        if (window.fbq) window.fbq('track', 'Lead');
+                                        onStart();
+                                    }}
                                     className="w-full py-4 rounded-2xl bg-yellow-400 text-black font-black text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 active:scale-95"
                                 >
                                     Register Now
@@ -403,7 +416,10 @@ function LandingPage({ onStart }) {
 
                     <motion.div variants={fadeUp}>
                         <button
-                            onClick={onStart}
+                            onClick={() => {
+                                if (window.fbq) window.fbq('track', 'Lead');
+                                onStart();
+                            }}
                             className="px-12 py-6 rounded-full bg-white text-black font-black text-2xl hover:bg-yellow-400 transition-all transform hover:scale-105 active:scale-95 shadow-2xl shadow-white/10"
                         >
                             Claim My Spot Now
