@@ -16,7 +16,9 @@ import {
   Users2,
   Award,
   ArrowRight,
-  Play
+  Play,
+  Menu,
+  X
 } from "lucide-react";
 import logo from "../assets/bumblebee-logo.jpg"; // <- put your logo here
 
@@ -184,11 +186,13 @@ export default function Home() {
 
 /* ---------------- TOPBAR / NAV ---------------- */
 function Topbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <><header className="fixed w-full z-50 top-0 bg-transparent">
+    <header className="fixed w-full z-50 top-0 bg-transparent">
       <div className="backdrop-blur-md bg-black/30 border-b border-white/6">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          <a href="#hero" onClick={(e) => scrollToSection(e, "hero")} className="flex items-center gap-3">
+          <a href="#hero" onClick={(e) => scrollToSection(e, "hero")} className="flex items-center gap-3 z-50">
             <div className="w-11 h-11 rounded-lg overflow-hidden shadow-md bg-white p-1">
               <img src={logo} alt="BumbleBee Corporate Solutions Logo" className="w-full h-full object-contain" />
             </div>
@@ -198,6 +202,7 @@ function Topbar() {
             </div>
           </a>
 
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6 text-sm text-slate-200">
             <a href="#about" onClick={(e) => scrollToSection(e, "about")} className="hover:text-yellow-400 transition">About</a>
             <a href="#services" onClick={(e) => scrollToSection(e, "services")} className="hover:text-yellow-400 transition">Services</a>
@@ -213,159 +218,235 @@ function Topbar() {
               Let's Talk
             </a>
           </nav>
+
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden z-50 text-white p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Nav Overlay */}
+      {isOpen && (
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed inset-0 z-40 bg-[#030712]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pt-16 lg:hidden"
+        >
+            <a href="#about" onClick={(e) => { setIsOpen(false); scrollToSection(e, "about"); }} className="text-2xl text-white font-bold hover:text-yellow-400 transition">About</a>
+            <a href="#services" onClick={(e) => { setIsOpen(false); scrollToSection(e, "services"); }} className="text-2xl text-white font-bold hover:text-yellow-400 transition">Services</a>
+            <a href="#industries" onClick={(e) => { setIsOpen(false); scrollToSection(e, "industries"); }} className="text-2xl text-white font-bold hover:text-yellow-400 transition">Industries</a>
+            <a href="#leadership" onClick={(e) => { setIsOpen(false); scrollToSection(e, "leadership"); }} className="text-2xl text-white font-bold hover:text-yellow-400 transition">Leadership</a>
+            <a href="/#/workshop" onClick={() => setIsOpen(false)} className="text-xl text-red-400 font-bold animate-pulse">Live Workshop</a>
+            <a href="#contact" onClick={(e) => { setIsOpen(false); scrollToSection(e, "contact"); }} className="text-2xl text-white font-bold hover:text-yellow-400 transition">Contact</a>
+        </motion.div>
+      )}
     </header>
-    </>
-  );/* ---------------- HERO ---------------- */
-  function Hero() {
-    return (
-      <section id="hero" className="min-h-screen relative flex items-center pt-20">
-        {/* Background Video */}
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.35]"
-          >
-            {/* Using a high-quality free corporate/office video for the background */}
-            <source src="https://cdn.pixabay.com/video/2021/08/19/85638-590629738_large.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07131a] via-black/40 to-black/60"></div>
-        </div>
+  );
+}
 
-        <div className="max-w-7xl mx-auto px-6 py-12 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Main Corporate Message */}
-          <motion.div
-            className="space-y-8 text-white"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.div variants={fadeUp}>
-              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                <Building2 size={16} className="text-yellow-400" />
-                <span className="text-sm font-semibold tracking-wider uppercase text-yellow-400">Corporate Training Experts</span>
-              </div>
-            </motion.div>
+/* ---------------- HERO ---------------- */
+function Hero() {
+  return (
+    <section id="hero" className="min-h-screen relative flex items-center pt-24 pb-20 overflow-hidden bg-[#030712]">
+      
+      {/* Dynamic Background with Glowing Orbs & Subtle Imagery */}
+      <div className="absolute inset-0 z-0">
+         <motion.div 
+           animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, -30, 0] }} 
+           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-yellow-500/10 blur-[7.5rem]" 
+         />
+         <motion.div 
+           animate={{ scale: [1, 1.3, 1], x: [0, -50, 0], y: [0, 50, 0] }} 
+           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute top-[30%] -right-[10%] w-[40%] h-[60%] rounded-full bg-blue-600/10 blur-[7.5rem]" 
+         />
+         
+         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity"></div>
+         <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/40 via-[#030712]/80 to-[#030712]"></div>
+      </div>
 
-            <motion.h1
-              className="font-extrabold leading-[1.1] text-5xl md:text-7xl tracking-tight"
-              variants={fadeUp}
-            >
-              Transforming <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">
-                Talent into Impact
-              </span>
-            </motion.h1>
-
-            <motion.p className="text-slate-300 text-lg md:text-xl max-w-lg leading-relaxed font-light" variants={fadeUp}>
-              {COMPANY.aboutbb}
-            </motion.p>
-
-            <motion.div variants={fadeUp} className="flex gap-4">
-              <a
-                href="#services"
-                onClick={(e) => scrollToSection(e, "services")}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold hover:bg-white/20 transition-all"
-              >
-                Our Services
-              </a>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Side - The Workshop Highlight */}
-          <motion.div
-            className="w-full relative"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
-          >
-            {/* Highlight glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-[2.5rem] blur-xl opacity-30 animate-pulse"></div>
-
-            <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl overflow-hidden">
-              {/* Tag */}
-              <div className="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-black px-4 py-1.5 uppercase tracking-widest rounded-bl-xl">
-                Frequent Event
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <div className="text-yellow-400 font-bold tracking-widest text-sm mb-2 uppercase flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-                    Live Workshop Series
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                    Personal Finance: <br /> <span className="text-slate-300 italic font-serif">The Untold Story</span>
-                  </h3>
-                </div>
-
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Join our exclusive, frequently held masterclass on bridging the gap between financial knowing and financial doing.
-                </p>
-
-                <div className="flex items-center gap-4 py-4 border-y border-white/10">
-                  <div className="flex-1">
-                    <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Format</div>
-                    <div className="text-white font-bold flex items-center gap-2">
-                      <Play size={16} className="text-yellow-400" /> Online Interactive
-                    </div>
-                  </div>
-                  <div className="w-px h-10 bg-white/10"></div>
-                  <div className="flex-1">
-                    <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-1">Next Session</div>
-                    <div className="text-white font-bold">9th May, 2026</div>
-                  </div>
-                </div>
-
-                <a
-                  href="/#/workshop"
-                  className="w-full inline-flex justify-center items-center gap-2 px-8 py-5 rounded-2xl bg-yellow-400 text-black font-black text-lg hover:bg-yellow-300 hover:scale-[1.02] active:scale-[0.98] transition-all"
-                >
-                  Reserve Your Spot Now
-                  <ArrowRight size={20} />
-                </a>
-              </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-12 gap-16 lg:gap-10 items-center">
+        
+        {/* Left Content - Messaging */}
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={stagger}
+          className="lg:col-span-6 space-y-8 text-center lg:text-left"
+        >
+          <motion.div variants={fadeUp} className="flex justify-center lg:justify-start">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur-md shadow-[0_0_0.9375rem_rgba(250,204,21,0.1)]">
+              <Building2 size={16} className="text-yellow-400" />
+              <span className="text-sm font-semibold tracking-wide text-yellow-400 uppercase">Premium Corporate Training</span>
             </div>
           </motion.div>
-        </div>
-      </section>
-    );
-  }
+
+          <motion.h1 
+            variants={fadeUp}
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1]"
+          >
+            Empowering <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">
+              Your Workforce
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            variants={fadeUp}
+            className="text-lg md:text-xl text-slate-300 font-light leading-relaxed max-w-lg mx-auto lg:mx-0"
+          >
+            We bridge the gap between talent development and organizational success through expert-led workshops and recruitment solutions.
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+             <a
+              href="#services"
+              onClick={(e) => scrollToSection(e, "services")}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform"
+            >
+              Explore Solutions
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, "contact")}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 backdrop-blur-md transition-colors"
+            >
+              Consult With Us
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Right Content - Workshop Highlight Card */}
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 1, type: "spring", stiffness: 50 }}
+          className="lg:col-span-6 w-full max-w-lg mx-auto lg:max-w-none"
+        >
+          <div className="relative group rounded-3xl p-[0.0625rem] bg-gradient-to-b from-white/20 to-white/5 hover:from-yellow-400/50 hover:to-white/10 transition-colors duration-500 shadow-2xl">
+            {/* Inner Card Background */}
+            <div className="absolute inset-0 bg-[#0a0a0a] rounded-3xl overflow-hidden">
+               {/* Decorative background image of Jiju */}
+               <div className="absolute inset-0 bg-[url('/images/jiju.jpeg')] bg-cover bg-top opacity-90 group-hover:scale-105 transition-transform duration-1000"></div>
+               {/* Darker gradient overlay to keep text readable without blurring the image */}
+               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/10"></div>
+            </div>
+
+            {/* Card Content */}
+            <div className="relative p-8 md:p-10 rounded-3xl flex flex-col h-full z-10">
+               
+               {/* Top Badges */}
+               <div className="flex items-start mb-16">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0a0a0a]/80 backdrop-blur-md text-red-400 text-xs font-bold uppercase tracking-wider border border-red-500/30 shadow-lg">
+                     <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                     Live Masterclass
+                  </div>
+               </div>
+
+               {/* Text content */}
+               <div className="mt-auto space-y-6">
+                  <div>
+                    <div className="text-yellow-400 font-bold tracking-widest text-sm mb-2 uppercase">Most Requested Session</div>
+                    <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                       Personal Finance: <br />
+                       <span className="italic font-serif text-slate-300 font-medium">The Untold Story</span>
+                    </h3>
+                  </div>
+                  
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+                     Bridge the gap between knowing what to do with your money and actually doing it. Join our exclusively curated, frequently held workshop.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md gap-4">
+                     <div>
+                        <div className="text-[0.625rem] text-slate-400 uppercase tracking-widest font-bold mb-1">Next Session</div>
+                        <div className="text-white font-bold tracking-wide">9th May, 2026</div>
+                     </div>
+                     <div className="hidden sm:block w-px h-8 bg-white/10"></div>
+                     <div>
+                        <div className="text-[0.625rem] text-slate-400 uppercase tracking-widest font-bold mb-1">Format</div>
+                        <div className="text-white font-bold flex items-center gap-1.5">
+                           <Play size={14} className="text-yellow-400"/> Online
+                        </div>
+                     </div>
+                  </div>
+
+                  <a
+                    href="/#/workshop"
+                    className="w-full flex justify-center items-center gap-2 px-8 py-5 rounded-xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-black text-lg hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-[0_0_1.875rem_rgba(250,204,21,0.25)]"
+                  >
+                    Reserve Your Spot
+                  </a>
+               </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
   /* ---------------- ABOUT ---------------- */
   function About() {
     return (
-      <section id="about" className="py-20 bg-gradient-to-b from-[#07131a] to-[#031017] text-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <section id="about" className="py-24 relative bg-[#030712] overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-[31.25rem] bg-gradient-to-bl from-yellow-500/5 to-transparent rounded-bl-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-[31.25rem] bg-gradient-to-tr from-blue-500/5 to-transparent rounded-tr-full blur-3xl pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
           <motion.div
-            className="space-y-6"
+            className="space-y-8"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            <motion.h2 className="text-3xl md:text-4xl font-bold" variants={fadeUp}>About Bumble Bee</motion.h2>
-            <motion.p className="text-slate-300" variants={fadeUp}>
+            <div>
+               <motion.div variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+                 Who We Are
+               </motion.div>
+               <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight" variants={fadeUp}>
+                 Nurturing Potential, <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-500">Delivering Excellence.</span>
+               </motion.h2>
+            </div>
+            
+            <motion.p className="text-lg text-slate-400 font-light leading-relaxed border-l-2 border-yellow-500/50 pl-6" variants={fadeUp}>
               {COMPANY.about}
             </motion.p>
 
-            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4" variants={stagger}>
+            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4" variants={stagger}>
               {COMPANY.missionPoints.map((m) => (
-                <motion.div key={m} variants={fadeUp} className="p-4 bg-white/4 rounded-lg border border-white/6">
-                  <div className="text-yellow-300 mb-2"><CheckCircle size={18} /></div>
-                  <div className="text-sm text-slate-200">{m}</div>
+                <motion.div key={m} variants={fadeUp} className="flex items-start gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition-colors">
+                  <div className="mt-1 flex-shrink-0 text-yellow-500 bg-yellow-500/10 p-1.5 rounded-full"><CheckCircle size={14} /></div>
+                  <div className="text-sm text-slate-300 leading-relaxed font-medium">{m}</div>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          <motion.div variants={fadeUp} initial="hidden" whileInView="show" className="rounded-3xl overflow-hidden border border-white/6 p-2">
-            <img src={logo} alt="company visual" className="w-full h-full object-contain rounded-xl" />
+          <motion.div 
+            variants={fadeUp} 
+            initial="hidden" 
+            whileInView="show" 
+            viewport={{ once: true }}
+            className="relative h-full min-h-[25rem] flex items-center justify-center lg:justify-end"
+          >
+             <div className="relative w-full max-w-md aspect-square">
+                {/* Glowing ring behind */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/20 to-transparent rounded-[3rem] blur-2xl animate-pulse"></div>
+                {/* Glass container */}
+                <div className="relative h-full w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] shadow-2xl overflow-hidden p-8 flex items-center justify-center transform transition-transform hover:scale-[1.02] duration-500">
+                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 mix-blend-overlay"></div>
+                   <img src={logo} alt="BumbleBee Corporate Solutions" className="w-full h-full object-contain filter drop-shadow-[0_0_1.25rem_rgba(255,255,255,0.1)] relative z-10" />
+                </div>
+             </div>
           </motion.div>
         </div>
       </section>
@@ -375,27 +456,37 @@ function Topbar() {
   /* ---------------- KEY CHALLENGES ---------------- */
   function KeyChallenges() {
     return (
-      <section id="challenges" className="py-20 bg-black text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Key Challenges We Solve</motion.h2>
-          <motion.p className="text-slate-300 mb-8" initial="hidden" whileInView="show" variants={fadeUp}>
-            Practical, measurable solutions designed from years of domain experience to address real workforce problems.
-          </motion.p>
+      <section id="challenges" className="py-24 bg-[#010308] text-white relative">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+             <motion.div initial="hidden" whileInView="show" variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+                Real World Problems
+             </motion.div>
+             <motion.h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight" initial="hidden" whileInView="show" variants={fadeUp}>
+                Challenges We <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Solve</span>
+             </motion.h2>
+             <motion.p className="text-lg text-slate-400 font-light" initial="hidden" whileInView="show" variants={fadeUp}>
+               Practical, measurable solutions designed from years of domain experience to address real workforce friction.
+             </motion.p>
+          </div>
 
-          <motion.div className="grid md:grid-cols-3 gap-6" initial="hidden" whileInView="show" variants={stagger} viewport={{ once: true }}>
-            {COMPANY.challenges.map((c) => (
+          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" initial="hidden" whileInView="show" variants={stagger} viewport={{ once: true, margin: "-50px" }}>
+            {COMPANY.challenges.map((c, i) => (
               <motion.div
                 key={c.title}
-                className="p-6 bg-gradient-to-br from-white/4 to-white/2 rounded-xl border border-white/6"
-                whileHover={cardHover}
+                className="group relative p-[0.0625rem] rounded-3xl bg-gradient-to-b from-white/10 to-white/5 hover:from-yellow-400/30 hover:to-white/10 transition-colors duration-500 overflow-hidden"
+                variants={fadeUp}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-md bg-yellow-400/20 flex items-center justify-center text-yellow-300">
-                    <Users2 size={20} />
-                  </div>
-                  <h4 className="font-semibold text-lg">{c.title}</h4>
-                </div>
-                <p className="mt-3 text-slate-200 text-sm">{c.solution}</p>
+                 <div className="absolute inset-0 bg-[#0a0a0a]"></div>
+                 <div className="absolute -inset-24 bg-gradient-to-br from-yellow-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl"></div>
+                 
+                 <div className="relative h-full p-8 rounded-3xl bg-black/40 backdrop-blur-md flex flex-col z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-yellow-400 mb-6 group-hover:scale-110 group-hover:bg-yellow-400/10 transition-all duration-300 shadow-lg">
+                      <Users2 size={24} />
+                    </div>
+                    <h4 className="font-bold text-xl text-white mb-3 leading-snug">{c.title}</h4>
+                    <p className="mt-auto text-slate-400 text-sm leading-relaxed font-light">{c.solution}</p>
+                 </div>
               </motion.div>
             ))}
           </motion.div>
@@ -407,51 +498,82 @@ function Topbar() {
   /* ---------------- SERVICES ---------------- */
   function Services() {
     return (
-      <section id="services" className="py-20 bg-gradient-to-b from-[#031017] to-[#021012] text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Our Services</motion.h2>
-          <motion.p className="text-slate-300 mb-8" initial="hidden" whileInView="show" variants={fadeUp}>
-            We combine corporate experience, data-driven methods and applied learning to enable organisations and students.
-          </motion.p>
+      <section id="services" className="py-24 relative bg-[#030712] text-white overflow-hidden">
+        {/* Glow */}
+        <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[80%] h-[31.25rem] bg-gradient-to-r from-yellow-500/10 via-yellow-600/5 to-transparent rounded-full blur-[6.25rem] pointer-events-none"></div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div className="p-8 rounded-2xl bg-gradient-to-br from-[#07131a] to-[#041018] border border-white/6 shadow" whileHover={cardHover}>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-yellow-400/10 rounded-lg text-yellow-300"><Users size={28} /></div>
-                <div>
-                  <h3 className="text-xl font-semibold">Corporate Training</h3>
-                  <div className="text-slate-300 text-sm mt-2">Tailored training for leadership, sales and domain-specific capability.</div>
-                </div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+             <motion.div initial="hidden" whileInView="show" variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-yellow-500 tracking-widest uppercase mb-4 shadow-[0_0_0.9375rem_rgba(234,179,8,0.1)]">
+                Our Expertise
+             </motion.div>
+             <motion.h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight" initial="hidden" whileInView="show" variants={fadeUp}>
+                Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Solutions</span>
+             </motion.h2>
+             <motion.p className="text-lg text-slate-400 font-light" initial="hidden" whileInView="show" variants={fadeUp}>
+               Combining corporate experience, data-driven methods, and applied learning to enable organizations and students to thrive.
+             </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+            {/* Service 1 */}
+            <motion.div className="group relative p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-yellow-500/30 transition-all duration-500 flex flex-col h-full shadow-2xl" whileHover={{ y: -10 }}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 blur-3xl rounded-full group-hover:bg-yellow-500/20 transition-colors duration-500"></div>
+              <div className="relative z-10">
+                 <div className="w-14 h-14 mb-8 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-black shadow-lg">
+                   <Users size={28} />
+                 </div>
+                 <h3 className="text-2xl font-bold mb-4 tracking-tight">Corporate Training</h3>
+                 <p className="text-slate-400 text-sm leading-relaxed font-light mb-8">Tailored training for leadership, sales, and domain-specific capability enhancement.</p>
+                 <ul className="mt-auto space-y-3">
+                   {COMPANY.services.corporateTraining.map((s) => (
+                      <li key={s} className="flex items-start gap-2 text-sm text-slate-300">
+                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0"></div>
+                         <span className="leading-snug">{s}</span>
+                      </li>
+                   ))}
+                 </ul>
               </div>
-              <ul className="mt-4 text-slate-300 text-sm space-y-2">
-                {COMPANY.services.corporateTraining.map((s) => <li key={s}>• {s}</li>)}
-              </ul>
             </motion.div>
 
-            <motion.div className="p-8 rounded-2xl bg-gradient-to-br from-[#07131a] to-[#041018] border border-white/6 shadow" whileHover={cardHover}>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-yellow-400/10 rounded-lg text-yellow-300"><Building2 size={28} /></div>
-                <div>
-                  <h3 className="text-xl font-semibold">Recruitment Consultancy</h3>
-                  <div className="text-slate-300 text-sm mt-2">End-to-end hiring for executive, mid and entry level roles.</div>
-                </div>
+            {/* Service 2 */}
+            <motion.div className="group relative p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-blue-500/30 transition-all duration-500 flex flex-col h-full shadow-2xl" whileHover={{ y: -10 }}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+              <div className="relative z-10">
+                 <div className="w-14 h-14 mb-8 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-lg">
+                   <Building2 size={28} />
+                 </div>
+                 <h3 className="text-2xl font-bold mb-4 tracking-tight">Recruitment Consultancy</h3>
+                 <p className="text-slate-400 text-sm leading-relaxed font-light mb-8">End-to-end hiring for executive, mid, and entry-level roles perfectly matched to your culture.</p>
+                 <ul className="mt-auto space-y-3">
+                   {COMPANY.services.recruitment.map((s) => (
+                      <li key={s} className="flex items-start gap-2 text-sm text-slate-300">
+                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></div>
+                         <span className="leading-snug">{s}</span>
+                      </li>
+                   ))}
+                 </ul>
               </div>
-              <ul className="mt-4 text-slate-300 text-sm space-y-2">
-                {COMPANY.services.recruitment.map((s) => <li key={s}>• {s}</li>)}
-              </ul>
             </motion.div>
 
-            <motion.div className="p-8 rounded-2xl bg-gradient-to-br from-[#07131a] to-[#041018] border border-white/6 shadow" whileHover={cardHover}>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-yellow-400/10 rounded-lg text-yellow-300"><GraduationCap size={28} /></div>
-                <div>
-                  <h3 className="text-xl font-semibold">Student Development</h3>
-                  <div className="text-slate-300 text-sm mt-2">Programs to prepare students for higher studies and employability.</div>
-                </div>
+            {/* Service 3 */}
+            <motion.div className="group relative p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all duration-500 flex flex-col h-full shadow-2xl" whileHover={{ y: -10 }}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full group-hover:bg-emerald-500/20 transition-colors duration-500"></div>
+              <div className="relative z-10">
+                 <div className="w-14 h-14 mb-8 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-lg">
+                   <GraduationCap size={28} />
+                 </div>
+                 <h3 className="text-2xl font-bold mb-4 tracking-tight">Student Development</h3>
+                 <p className="text-slate-400 text-sm leading-relaxed font-light mb-8">Specialized programs to prepare students for higher studies and immediate employability.</p>
+                 <ul className="mt-auto space-y-3">
+                   {COMPANY.services.studentPrograms.map((s) => (
+                      <li key={s} className="flex items-start gap-2 text-sm text-slate-300">
+                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></div>
+                         <span className="leading-snug">{s}</span>
+                      </li>
+                   ))}
+                 </ul>
               </div>
-              <ul className="mt-4 text-slate-300 text-sm space-y-2">
-                {COMPANY.services.studentPrograms.map((s) => <li key={s}>• {s}</li>)}
-              </ul>
             </motion.div>
           </div>
         </div>
@@ -462,62 +584,71 @@ function Topbar() {
   /* ---------------- UPCOMING WORKSHOP ---------------- */
   function UpcomingWorkshop() {
     return (
-      <section id="workshop-cta" className="py-20 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-            <motion.div
-              className="md:max-w-xl"
-              initial="hidden"
-              whileInView="show"
-              variants={fadeUp}
-            >
-              <div className="inline-block px-3 py-1 rounded-full bg-black/10 text-sm font-bold mb-4 uppercase tracking-wider">Limited Seats Available</div>
-              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-                Personal Finance: <br />
-                <span className="italic opacity-80 text-3xl md:text-4xl block mt-2">The Untold Story of Behavior</span>
-              </h2>
-              <p className="text-lg font-medium mb-8 opacity-80">
-                Join Jiju K’s exclusive masterclass on bridging the gap between financial knowing and financial doing. Learn the behavioral hacks to fix lifestyle inflation and master your wealth.
-              </p>
-              <div className="flex gap-4 mb-8">
-                <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
-                  <div className="text-[10px] uppercase font-bold opacity-50">Date</div>
-                  <div className="font-bold">9th May 2026</div>
-                </div>
-                <div className="px-4 py-2 rounded-xl bg-black/5 border border-black/10">
-                  <div className="text-[10px] uppercase font-bold opacity-50">Time</div>
-                  <div className="font-bold">10:00 AM - 11:30 AM</div>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="/#/workshop"
-                  className="px-8 py-4 rounded-full bg-black text-white font-black text-lg hover:scale-105 transition transform active:scale-95 shadow-xl"
-                >
-                  Book My Seat — ₹199
-                </a>
-                <div className="flex items-center gap-2 text-sm font-bold">
-                  <Users size={18} />
-                  <span>87/100 Seats Filled</span>
-                </div>
-              </div>
-            </motion.div>
+      <section id="workshop-cta" className="py-24 bg-[#010308] text-white relative overflow-hidden">
+        {/* Dynamic Abstract Background */}
+        <div className="absolute inset-0 z-0">
+           <div className="absolute top-[10%] right-[10%] w-[40%] h-[80%] rounded-full bg-gradient-to-l from-yellow-500/20 to-transparent blur-[7.5rem]"></div>
+           <div className="absolute bottom-[10%] left-[10%] w-[30%] h-[50%] rounded-full bg-red-600/10 blur-[6.25rem]"></div>
+        </div>
 
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="absolute -inset-4 bg-black/10 blur-2xl rounded-full" />
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-black/5 shadow-2xl rotate-3">
-                <img src="/images/jiju.jpeg" alt="Jiju K" className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black text-white">
-                  <div className="font-bold">Jiju K</div>
-                  <div className="text-xs opacity-70">BFSI Expert & CEO</div>
-                </div>
-              </div>
-            </motion.div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="w-full bg-white/[0.02] border border-white/[0.05] rounded-[3rem] p-8 md:p-12 lg:p-16 backdrop-blur-3xl shadow-2xl overflow-hidden relative group">
+             {/* Subtle scanline overlay */}
+             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSJ0cmFuc3BhcmVudCIvPgo8cGF0aCBkPSJNMCAwaDR2MUgweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIvPgo8L3N2Zz4=')] opacity-50 mix-blend-overlay pointer-events-none"></div>
+             
+             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 relative z-10">
+                <motion.div
+                  className="lg:w-2/3 space-y-8"
+                  initial="hidden"
+                  whileInView="show"
+                  variants={stagger}
+                >
+                  <motion.div variants={fadeUp} className="inline-flex items-center gap-2">
+                     <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                     <span className="text-red-400 font-black tracking-widest uppercase text-xs">Seats Filling Fast</span>
+                  </motion.div>
+                  
+                  <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                    Personal Finance: <br />
+                    <span className="italic font-serif text-slate-300 font-medium">The Untold Story of Behavior</span>
+                  </motion.h2>
+                  
+                  <motion.p variants={fadeUp} className="text-lg text-slate-400 font-light leading-relaxed max-w-xl">
+                    A transformative masterclass bridging the gap between financial knowing and financial doing. Master the behavioral hacks to fix lifestyle inflation.
+                  </motion.p>
+                  
+                  <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6">
+                    <a
+                      href="/#/workshop"
+                      className="px-8 py-5 rounded-2xl bg-yellow-400 text-black font-black text-lg hover:scale-105 active:scale-95 transition-transform shadow-[0_0_1.875rem_rgba(250,204,21,0.2)] flex items-center gap-3"
+                    >
+                      Book My Seat — ₹199 <ArrowRight size={20} />
+                    </a>
+                    <div className="flex items-center gap-3 text-sm font-medium text-slate-300">
+                      <div className="flex -space-x-3">
+                         <div className="w-8 h-8 rounded-full bg-slate-800 border-2 border-[#010308] flex items-center justify-center text-[0.625rem]">+80</div>
+                      </div>
+                      <span>Professionals already registered</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="lg:w-1/3 w-full max-w-sm"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-yellow-500/30 transition-colors duration-500">
+                     <img src="/images/jiju.jpeg" alt="Jiju K" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                     <div className="absolute bottom-0 left-0 w-full p-6 text-white">
+                        <div className="font-black text-xl mb-1">Jiju K</div>
+                        <div className="text-sm text-yellow-400 font-bold uppercase tracking-wider">BFSI Expert & CEO</div>
+                     </div>
+                  </div>
+                </motion.div>
+             </div>
           </div>
         </div>
       </section>
@@ -528,28 +659,43 @@ function Topbar() {
   /* ---------------- INDUSTRIES ---------------- */
   function Industries() {
     return (
-      <section id="industries" className="py-20 bg-black text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Industries We Serve</motion.h2>
-          <motion.p className="text-slate-300 mb-8" initial="hidden" whileInView="show" variants={fadeUp}>
-            Focused domain expertise for measurable results.
-          </motion.p>
+      <section id="industries" className="py-24 bg-[#030712] text-white overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+             <div className="max-w-2xl">
+                <motion.div initial="hidden" whileInView="show" variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+                   Domain Expertise
+                </motion.div>
+                <motion.h2 className="text-4xl md:text-5xl font-black tracking-tight" initial="hidden" whileInView="show" variants={fadeUp}>
+                   Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Elevate</span>
+                </motion.h2>
+             </div>
+             <motion.p className="text-lg text-slate-400 font-light max-w-sm md:text-right" initial="hidden" whileInView="show" variants={fadeUp}>
+               Focused domain expertise ensuring measurable results tailored to your specific sector.
+             </motion.p>
+          </div>
 
-          <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-            {COMPANY.industries.map((ind) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {COMPANY.industries.map((ind, i) => (
               <motion.div
                 key={ind}
-                className="min-w-[260px] p-6 rounded-xl bg-gradient-to-br from-white/4 to-white/2 border border-white/6"
-                whileHover={cardHover}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all duration-300 relative overflow-hidden"
               >
-                <h4 className="font-semibold text-lg">{ind}</h4>
-                <p className="mt-2 text-slate-300 text-sm">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                <h4 className="font-bold text-xl text-white mb-3 relative z-10">{ind}</h4>
+                <p className="text-slate-400 text-sm font-light leading-relaxed relative z-10">
                   Custom solutions tailored for this sector, leveraging BFSI experience and modern delivery methods.
                 </p>
+                <div className="mt-8 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-500 group-hover:bg-yellow-400 group-hover:text-black transition-colors relative z-10">
+                   <ArrowRight size={16} />
+                </div>
               </motion.div>
             ))}
           </div>
-
         </div>
       </section>
     );
@@ -558,27 +704,45 @@ function Topbar() {
   /* ---------------- LEADERSHIP ---------------- */
   function Leadership() {
     return (
-      <section id="leadership" className="py-20 bg-gradient-to-b from-[#031017] to-[#021012] text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" initial="hidden" whileInView="show" variants={fadeUp}>Leadership & Promoters</motion.h2>
-          <motion.div className="grid md:grid-cols-2 gap-6" initial="hidden" whileInView="show" variants={stagger} viewport={{ once: true }}>
+      <section id="leadership" className="py-24 bg-[#010308] text-white relative">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+             <motion.div initial="hidden" whileInView="show" variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+                The Architects
+             </motion.div>
+             <motion.h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight" initial="hidden" whileInView="show" variants={fadeUp}>
+                Leadership & <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Promoters</span>
+             </motion.h2>
+          </div>
+          
+          <motion.div className="grid md:grid-cols-2 gap-8 lg:gap-12" initial="hidden" whileInView="show" variants={stagger} viewport={{ once: true }}>
             {COMPANY.leaders.map((l) => (
-              <motion.div key={l.name} className="p-6 rounded-xl bg-black/60 border border-white/6" whileHover={cardHover}>
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-lg bg-yellow-400/10 flex items-center justify-center text-yellow-300">
-                    <Award size={26} />
+              <motion.div key={l.name} className="group p-8 md:p-10 rounded-[2.5rem] bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/[0.05] hover:border-white/[0.1] transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 blur-3xl rounded-full pointer-events-none"></div>
+                
+                <div className="flex flex-col sm:flex-row gap-8 items-start relative z-10">
+                  <div className="flex-shrink-0 relative">
+                     <div className="absolute -inset-2 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                     <img
+                       src={l.image}
+                       alt={l.name}
+                       className="w-28 h-28 md:w-32 md:h-32 rounded-2xl object-cover border-2 border-white/10 relative z-10 group-hover:scale-105 transition-transform duration-500"
+                     />
+                     <div className="absolute -bottom-4 -right-4 w-12 h-12 rounded-xl bg-yellow-400 text-black flex items-center justify-center shadow-lg z-20">
+                        <Award size={20} />
+                     </div>
                   </div>
-                  <div>
-                    <img
-                      src={l.image}
-                      alt={l.name}
-                      className="w-20 h-20 rounded-full object-cover mb-4"
-                    />
-                    <h3 className="text-xl font-bold">{l.name}</h3>
-                    <div className="text-yellow-300 text-sm">{l.title}</div>
-                    <p className="mt-3 text-slate-300 text-sm">{l.summary}</p>
-                    <ul className="mt-3 text-slate-300 text-sm list-disc list-inside space-y-1">
-                      {l.highlights.map((h) => <li key={h}>{h}</li>)}
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-black tracking-tight">{l.name}</h3>
+                    <div className="text-yellow-400 text-sm font-bold tracking-wider uppercase mt-1 mb-4">{l.title}</div>
+                    <p className="text-slate-400 font-light leading-relaxed mb-6">{l.summary}</p>
+                    <ul className="space-y-2">
+                      {l.highlights.map((h) => (
+                         <li key={h} className="flex items-start gap-2 text-sm text-slate-300 font-medium">
+                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/20 flex-shrink-0"></div>
+                            <span className="leading-snug">{h}</span>
+                         </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -613,15 +777,30 @@ function Topbar() {
   /* ---------------- CAREERS ---------------- */
   function Careers() {
     return (
-      <section id="careers" className="py-20 bg-gradient-to-b from-[#07131a] to-[#031017] text-white">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h2 className="text-3xl md:text-4xl font-bold" initial="hidden" whileInView="show" variants={fadeUp}>Careers — Join Our Hive</motion.h2>
-          <motion.p className="text-slate-300 mt-4 max-w-2xl mx-auto" initial="hidden" whileInView="show" variants={fadeUp}>
-            Join our team of passionate trainers, recruiters, and strategists shaping the workforce of tomorrow. We value learning, impact, and real-world outcomes.
+      <section id="careers" className="py-24 bg-[#030712] text-white relative overflow-hidden">
+        {/* Glow */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+           <div className="w-[80%] h-[18.75rem] bg-gradient-to-b from-yellow-500/10 to-transparent blur-[6.25rem] rounded-full"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <motion.div initial="hidden" whileInView="show" variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+             Join Our Hive
+          </motion.div>
+          <motion.h2 className="text-4xl md:text-5xl font-black tracking-tight" initial="hidden" whileInView="show" variants={fadeUp}>
+             Shape the Workforce of <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Tomorrow</span>
+          </motion.h2>
+          <motion.p className="text-lg text-slate-400 font-light mt-6 max-w-2xl mx-auto" initial="hidden" whileInView="show" variants={fadeUp}>
+            Join our elite team of passionate trainers, recruiters, and strategists. We value continuous learning, measurable impact, and real-world outcomes.
           </motion.p>
 
-          <motion.div className="mt-8 flex justify-center" initial="hidden" whileInView="show" variants={fadeUp}>
-            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-black font-semibold shadow">Explore Opportunities <Briefcase size={16} /></a>
+          <motion.div className="mt-10 flex justify-center" initial="hidden" whileInView="show" variants={fadeUp}>
+            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold shadow-[0_0_1.25rem_rgba(255,255,255,0.1)] hover:scale-105 active:scale-95 transition-all">
+               Explore Opportunities 
+               <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-colors">
+                  <Briefcase size={16} />
+               </div>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -668,55 +847,72 @@ function Topbar() {
     };
 
     return (
-      <section id="contact" className="py-20 bg-black text-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-slate-300 mb-6">
+      <section id="contact" className="py-24 bg-[#010308] text-white relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-900/10 via-transparent to-transparent opacity-50"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start relative z-10">
+          <motion.div initial="hidden" whileInView="show" variants={stagger} viewport={{ once: true }}>
+            <motion.div variants={fadeUp} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 tracking-widest uppercase mb-4">
+               Connect With Us
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Collaborate</span></motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-slate-400 font-light mb-10 max-w-md">
               Reach out for program design, recruitment partnerships, or student development collaborations.
-            </p>
+            </motion.p>
 
-            <ContactLine icon={<Phone />} label="Phone" value={COMPANY.contact.phones.join(" / ")} />
-            <ContactLine icon={<Mail />} label="Email" value={COMPANY.contact.email} />
-            <ContactLine icon={<MapPin />} label="Address" value={COMPANY.contact.address} />
-            <ContactLine icon={<Briefcase />} label="Website" value={COMPANY.contact.website} />
-          </div>
+            <motion.div variants={stagger} className="space-y-6">
+               <ContactLine icon={<Phone />} label="Phone" value={COMPANY.contact.phones.join(" / ")} />
+               <ContactLine icon={<Mail />} label="Email" value={COMPANY.contact.email} />
+               <ContactLine icon={<MapPin />} label="Address" value={COMPANY.contact.address} />
+               <ContactLine icon={<Briefcase />} label="Website" value={COMPANY.contact.website} />
+            </motion.div>
+          </motion.div>
 
-          <div className="p-6 rounded-xl bg-gradient-to-br from-white/4 to-white/2 border border-white/6">
-            <h4 className="font-semibold text-lg mb-4">Send an enquiry</h4>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 rounded bg-transparent border border-white/10 text-white placeholder:text-slate-400"
-                placeholder="Your name"
-                required
-              />
-              <input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 rounded bg-transparent border border-white/10 text-white placeholder:text-slate-400"
-                placeholder="Email"
-                required
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full p-3 rounded bg-transparent border border-white/10 text-white placeholder:text-slate-400"
-                rows="5"
-                placeholder="Tell us about your requirement"
-                required
-              />
-              <button type="submit" className="inline-flex items-center gap-2 px-4 py-2 rounded bg-yellow-400 text-black font-semibold">
-                Send Enquiry
-              </button>
-            </form>
-            {status && <p className="mt-4 text-sm text-slate-300">{status}</p>}
-          </div>
+          <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }} className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-br from-yellow-500/20 to-transparent rounded-[2.5rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-700"></div>
+            
+            <div className="relative p-8 md:p-10 rounded-[2.5rem] bg-[#0a0a0a] border border-white/10 shadow-2xl">
+              <h4 className="font-bold text-2xl mb-8 tracking-tight">Send an enquiry</h4>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                   <input
+                     name="name"
+                     value={formData.name}
+                     onChange={handleChange}
+                     className="w-full p-4 rounded-2xl bg-white/[0.03] border border-white/10 focus:border-yellow-500/50 focus:bg-white/[0.05] transition-all text-white placeholder:text-slate-500 outline-none"
+                     placeholder="Full Name"
+                     required
+                   />
+                </div>
+                <div>
+                   <input
+                     name="email"
+                     type="email"
+                     value={formData.email}
+                     onChange={handleChange}
+                     className="w-full p-4 rounded-2xl bg-white/[0.03] border border-white/10 focus:border-yellow-500/50 focus:bg-white/[0.05] transition-all text-white placeholder:text-slate-500 outline-none"
+                     placeholder="Business Email"
+                     required
+                   />
+                </div>
+                <div>
+                   <textarea
+                     name="message"
+                     value={formData.message}
+                     onChange={handleChange}
+                     className="w-full p-4 rounded-2xl bg-white/[0.03] border border-white/10 focus:border-yellow-500/50 focus:bg-white/[0.05] transition-all text-white placeholder:text-slate-500 outline-none resize-none"
+                     rows="4"
+                     placeholder="Tell us about your requirement..."
+                     required
+                   />
+                </div>
+                <button type="submit" className="w-full flex justify-center items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-black text-lg hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-[0_0_1.25rem_rgba(250,204,21,0.2)]">
+                  Send Enquiry <ArrowRight size={18} />
+                </button>
+              </form>
+              {status && <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10 text-sm text-center text-slate-300 animate-fade-in">{status}</div>}
+            </div>
+          </motion.div>
         </div>
       </section>
     );
@@ -725,19 +921,32 @@ function Topbar() {
   /* ---------------- FOOTER ---------------- */
   function Footer() {
     return (
-      <footer className="bg-[#03080a] text-slate-400 py-8">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded overflow-hidden bg-white p-1">
-              <img src={logo} alt="logo" className="w-full h-full object-contain" />
-            </div>
-            <div>
-              <div className="text-white font-semibold">{COMPANY.name}</div>
-              <div className="text-xs">Training • Recruitment • Student Programs</div>
-            </div>
-          </div>
-
-          <div className="text-sm text-slate-400">© {new Date().getFullYear()} {COMPANY.name}. All rights reserved.</div>
+      <footer className="bg-[#030712] border-t border-white/5 pt-12 pb-8">
+        <div className="max-w-7xl mx-auto px-6">
+           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+             <div className="flex items-center gap-4">
+               <div className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-[0_0_0.9375rem_rgba(255,255,255,0.1)]">
+                 <img src={logo} alt="logo" className="w-full h-full object-contain" />
+               </div>
+               <div>
+                 <div className="text-white font-bold tracking-wide">{COMPANY.name}</div>
+                 <div className="text-xs text-slate-500 uppercase tracking-widest font-medium mt-1">Training • Recruitment • Impact</div>
+               </div>
+             </div>
+             
+             <div className="flex gap-4">
+                <a href="#services" className="text-sm text-slate-400 hover:text-white transition-colors">Services</a>
+                <a href="#leadership" className="text-sm text-slate-400 hover:text-white transition-colors">Leadership</a>
+                <a href="#contact" className="text-sm text-slate-400 hover:text-white transition-colors">Contact</a>
+             </div>
+           </div>
+           
+           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
+           
+           <div className="text-center text-sm text-slate-600">
+              © {new Date().getFullYear()} {COMPANY.name}. All rights reserved. <br className="md:hidden" />
+              <span className="hidden md:inline"> | </span> Empowering the workforce of tomorrow.
+           </div>
         </div>
       </footer>
     );
@@ -755,13 +964,13 @@ function Topbar() {
 
   function ContactLine({ icon, label, value }) {
     return (
-      <div className="flex items-start gap-3">
-        <div className="text-yellow-300 p-2 rounded bg-yellow-400/6">
+      <div className="group flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-yellow-500/20 transition-all">
+        <div className="text-yellow-400 p-3 rounded-xl bg-yellow-500/10 group-hover:scale-110 transition-transform shadow-inner">
           {icon}
         </div>
         <div>
-          <div className="text-sm text-slate-300">{label}</div>
-          <div className="text-white">{value}</div>
+          <div className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">{label}</div>
+          <div className="text-white font-medium">{value}</div>
         </div>
       </div>
     );
@@ -774,4 +983,3 @@ function Topbar() {
       </svg>
     );
   }
-}
