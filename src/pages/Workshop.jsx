@@ -34,6 +34,7 @@ export default function Workshop() {
     const [formData, setFormData] = useState({ name: "", email: "", whatsapp: "" });
     const [serverAwake, setServerAwake] = useState(false);
     const [whatsappLink, setWhatsappLink] = useState("");
+    const [isRegistering, setIsRegistering] = useState(false);
 
     // Wake up the Render server as soon as the page loads
     React.useEffect(() => {
@@ -48,12 +49,33 @@ export default function Workshop() {
         wakeServer();
     }, []);
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
+        setIsRegistering(true);
         // Track the InitiateCheckout event for Facebook ads
         if (window.fbq) {
             window.fbq('track', 'InitiateCheckout');
         }
+        
+        try {
+            await fetch('https://formspree.io/f/xlgaqdgj', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    whatsapp: formData.whatsapp,
+                    source: "BumbleBee Workshop Registration"
+                })
+            });
+        } catch (error) {
+            console.error("Formspree submission error:", error);
+        }
+        
+        setIsRegistering(false);
         setStep("PAYMENT");
     };
 
@@ -104,6 +126,7 @@ export default function Workshop() {
                         setFormData={setFormData}
                         onSubmit={handleRegister}
                         onBack={() => setStep("LANDING")}
+                        isRegistering={isRegistering}
                     />
                 )}
 
@@ -164,9 +187,9 @@ function LandingPage({ onStart }) {
                         <div className="flex flex-col items-center sm:items-start gap-2">
                             <div className="flex items-center gap-2 text-yellow-400 font-bold">
                                 <TrendingUp size={20} />
-                                <span className="text-xl">13th April, 2026</span>
+                                <span className="text-xl">9th May, 2026</span>
                             </div>
-                            <div className="text-slate-500 font-medium">07:30 PM — 09:00 PM IST</div>
+                            <div className="text-slate-500 font-medium">10:00 AM — 11:30 AM IST</div>
                         </div>
                         <div className="h-px w-20 bg-white/10 hidden sm:block"></div>
                         <button
@@ -431,7 +454,7 @@ function LandingPage({ onStart }) {
     );
 }
 
-function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
+function RegistrationForm({ formData, setFormData, onSubmit, onBack, isRegistering }) {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -448,8 +471,8 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
                     <div className="mb-10">
                         <h2 className="text-3xl font-bold mb-2">Reserve Your Spot</h2>
                         <div className="flex flex-wrap gap-4 mt-4">
-                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 13th April</div>
-                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 07:30 PM - 09:00 PM</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 uppercase tracking-wider">📅 9th May</div>
+                            <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider">⏰ 10:00 AM - 11:30 AM</div>
                         </div>
                     </div>
 
@@ -495,9 +518,14 @@ function RegistrationForm({ formData, setFormData, onSubmit, onBack }) {
 
                         <button
                             type="submit"
-                            className="w-full py-5 mt-4 rounded-2xl bg-yellow-400 text-black font-black text-lg hover:bg-yellow-300 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                            disabled={isRegistering}
+                            className="w-full py-5 mt-4 rounded-2xl bg-yellow-400 text-black font-black text-lg flex items-center justify-center gap-3 hover:bg-yellow-300 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Continue to Payment
+                            {isRegistering ? (
+                                <div className="w-6 h-6 border-4 border-black/30 border-t-black rounded-full animate-spin" />
+                            ) : (
+                                "Continue to Payment"
+                            )}
                         </button>
                     </form>
 
