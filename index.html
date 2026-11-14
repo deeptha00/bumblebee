@@ -6,31 +6,72 @@
   <link rel="icon" type="image/jpg" href="/bumblebee-logo.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary Meta Tags -->
-  <title>BumbleBee | Corporate Training & HR Recruitment Solutions</title>
-  <meta name="title" content="BumbleBee | Corporate Training & HR Recruitment Solutions" />
+  <!--
+    GitHub Pages SPA fallback: public/404.html redirects any unknown path
+    here with the real path stashed in sessionStorage.redirect. Decode it
+    back into the URL bar (before React Router reads it) so deep links and
+    page refreshes on routes like /about or /services work correctly.
+  -->
+  <script>
+    (function () {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+
+  <!-- Primary Meta Tags (fallback defaults; each route overrides these via react-helmet-async) -->
+  <title>Bumble Bee Corporate Solutions LLP | Corporate Training & Capability Development</title>
+  <meta name="title" content="Bumble Bee Corporate Solutions LLP | Corporate Training & Capability Development" />
   <meta name="description"
-    content="BumbleBee Corporate Solutions provides expert corporate training, HR recruitment, and student development programs. Specializing in BFSI, leadership, and professional growth." />
+    content="Bumble Bee Corporate Solutions LLP designs experiential corporate training, BFSI domain mastery, and academic employability programs that turn knowledge into measurable, real-world performance." />
   <meta name="keywords"
-    content="BumbleBee, Corporate Training, HR Recruitment, BFSI Training, Leadership Development, Soft Skills, Personal Finance Workshop, Job Recruitment Calicut" />
-  <meta name="author" content="BumbleBee Corporate Solutions" />
+    content="Bumble Bee Corporate Solutions, Corporate Training Calicut, BFSI Training, Leadership Development, Soft Skills Training, Academic Employability Programs, Centre of Excellence" />
+  <meta name="author" content="Bumble Bee Corporate Solutions LLP" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bumblebeeindia.com/" />
-  <meta property="og:title" content="BumbleBee | Redefining Learning, Empowering the World" />
+  <meta property="og:title" content="Bumble Bee Corporate Solutions LLP | Bridging Knowledge and Execution" />
   <meta property="og:description"
-    content="Expert corporate training and recruitment solutions. Join our exclusive Personal Finance behavior workshops." />
+    content="Experiential corporate training, BFSI domain mastery, and academic employability programs from classroom to boardroom." />
   <meta property="og:image" content="https://bumblebeeindia.com/bumblebee-logo.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://bumblebeeindia.com/" />
-  <meta property="twitter:title" content="BumbleBee | Corporate Training & HR Recruitment" />
+  <meta property="twitter:title" content="Bumble Bee Corporate Solutions LLP" />
   <meta property="twitter:description"
-    content="Expert corporate training and recruitment solutions. Join our exclusive Personal Finance behavior workshops." />
+    content="Experiential corporate training, BFSI domain mastery, and academic employability programs from classroom to boardroom." />
   <meta property="twitter:image" content="https://bumblebeeindia.com/bumblebee-logo.jpg" />
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Bumble Bee Corporate Solutions LLP",
+    "alternateName": "Bumble Bee",
+    "url": "https://bumblebeeindia.com/",
+    "logo": "https://bumblebeeindia.com/bumblebee-logo.jpg",
+    "image": "https://bumblebeeindia.com/bumblebee-logo.jpg",
+    "description": "Bumble Bee Corporate Solutions LLP is a specialized learning, capability development, and human capital enablement firm bridging academic learning and industry execution.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1st floor, Pootholi Building, Behind Rajendra Nursing Home, Ashokapuram",
+      "addressLocality": "Calicut",
+      "postalCode": "673001",
+      "addressRegion": "Kerala",
+      "addressCountry": "IN"
+    },
+    "telephone": ["+91-8848554879", "+91-9946558352"],
+    "email": "jiju.k@bumblebeeindia.com",
+    "sameAs": []
+  }
+  </script>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
