@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bumble Bee Corporate Solutions LLP</title>
+  <!--
+    GitHub Pages serves this file for any unknown path. It encodes the
+    requested path into a query string and redirects to the real index.html,
+    which decodes it back (see the script in index.html) so React Router can
+    render the correct route on load. Standard "spa-github-pages" trick.
+  -->
+  <script>
+    var path = window.location.pathname + window.location.search + window.location.hash;
+    sessionStorage.redirect = path;
+    window.location.replace(window.location.origin + "/");
+  </script>
+</head>
+<body></body>
+</html>
