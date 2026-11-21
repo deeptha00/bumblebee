@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
   Phone,
@@ -106,9 +107,9 @@ const GROUPS = [
 ];
 
 const ACCENTS = {
-  yellow: { dot: "bg-yellow-400", chipText: "text-yellow-300" },
-  sky: { dot: "bg-sky-400", chipText: "text-sky-300" },
-  rose: { dot: "bg-rose-400", chipText: "text-rose-300" },
+  yellow: { dot: "bg-yellow-400", chipText: "text-yellow-300", bar: "from-yellow-400 to-amber-500", wash: "text-yellow-400/5" },
+  sky: { dot: "bg-sky-400", chipText: "text-sky-300", bar: "from-sky-400 to-blue-500", wash: "text-sky-400/5" },
+  rose: { dot: "bg-rose-400", chipText: "text-rose-300", bar: "from-rose-400 to-pink-500", wash: "text-rose-400/5" },
 };
 
 const ALL_TABS = GROUPS.flatMap((g) => g.tabs.map((t) => ({ ...t, accent: g.accent })));
@@ -156,16 +157,22 @@ export default function AdminPanel() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-[#030712] text-slate-400 gap-2">
-        <Loader2 className="animate-spin" size={18} /> Loading content…
+      <div className="h-screen flex flex-col items-center justify-center bg-[#030712] text-slate-400 gap-3">
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-yellow-400/20 blur-xl" />
+          <img src={logo} alt="" className="relative w-12 h-12 rounded-full object-cover ring-2 ring-yellow-400/30" />
+        </div>
+        <div className="flex items-center gap-2 text-sm font-medium">
+          <Loader2 className="animate-spin" size={15} /> Warming up the hive…
+        </div>
       </div>
     );
   }
 
   if (!content) {
     return (
-      <div className="h-screen flex items-center justify-center bg-[#030712] text-red-400 px-6 text-center">
-        Could not load site content. Is the backend server running?
+      <div className="h-screen flex items-center justify-center bg-[#030712] text-rose-400 px-6 text-center text-sm font-medium">
+        Couldn't reach the hive — check that the backend server is running.
       </div>
     );
   }
@@ -178,6 +185,10 @@ export default function AdminPanel() {
     <div className="h-screen flex bg-slate-100 overflow-hidden">
       {/* Sidebar — fixed to viewport height, dark brand treatment, scrolls independently */}
       <aside className="relative w-72 h-screen flex flex-col bg-[#030712] shrink-0 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.07] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "18px 18px" }}
+        />
         <div className="absolute -top-16 -left-16 w-56 h-56 bg-yellow-500/10 rounded-full blur-[5rem] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-56 h-40 bg-blue-500/5 rounded-full blur-[5rem] pointer-events-none" />
 
@@ -311,8 +322,28 @@ export default function AdminPanel() {
 
         <div className="admin-scroll flex-1 overflow-y-auto bg-gradient-to-b from-slate-50 to-slate-100">
           <div className="p-8 max-w-3xl">
-            <div className="bg-white rounded-[2rem] border border-slate-200 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.25)] p-6 sm:p-9">
-              {ActiveComponent && <ActiveComponent content={content} update={update} />}
+            <div className="relative bg-white rounded-[2rem] border border-slate-200 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.25)] overflow-hidden">
+              <div className={`h-1.5 bg-gradient-to-r ${activeColors.bar}`} />
+              {activeMeta?.icon && (
+                <activeMeta.icon
+                  size={180}
+                  strokeWidth={1}
+                  className={`absolute -top-8 -right-8 ${activeColors.wash} pointer-events-none select-none`}
+                />
+              )}
+              <div className="relative p-6 sm:p-9">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    {ActiveComponent && <ActiveComponent content={content} update={update} />}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>

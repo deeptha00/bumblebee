@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Lock, ArrowRight, Loader2 } from "lucide-react";
 import logo from "../assets/bumblebee-logo.jpg";
 import { login, verifyToken } from "./adminApi";
@@ -35,7 +36,12 @@ export default function AdminLogin() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40rem] h-[28rem] bg-gradient-to-b from-yellow-500/10 to-transparent blur-[6rem] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[26rem] h-[26rem] bg-blue-500/10 rounded-full blur-[6rem] pointer-events-none" />
 
-      <div className="relative w-full max-w-sm">
+      <motion.div
+        initial={{ opacity: 0, y: 16, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-sm"
+      >
         <div className="relative bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-[2rem] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] p-8">
           <div className="flex flex-col items-center gap-4 mb-7">
             <div className="relative">
@@ -90,7 +96,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center text-xs text-slate-600 mt-6">Bumble Bee Corporate Solutions LLP</p>
-      </div>
+      </motion.div>
     </div>
   );
 }
