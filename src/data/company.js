@@ -46,7 +46,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Mastering the Core of Finance"
+      "description": "Mastering the Core of Finance",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "bfsi-launchpad",
@@ -59,7 +60,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Domain Mastery for Commerce & Econ Grads"
+      "description": "Domain Mastery for Commerce & Econ Grads",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "where-capital-meets-opportunity",
@@ -72,7 +74,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest"
       ],
-      "description": "Decoding Financial Markets"
+      "description": "Decoding Financial Markets",
+      "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-equity-engine",
@@ -85,7 +88,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest"
       ],
-      "description": "How Stock Markets Build & Measure Value"
+      "description": "How Stock Markets Build & Measure Value",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "mind-over-market",
@@ -98,7 +102,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
       ],
-      "description": "The Psychology of Smart Investing"
+      "description": "The Psychology of Smart Investing",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-complete-analyst",
@@ -111,7 +116,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
       ],
-      "description": "Mastering Fundamental & Technical Analysis"
+      "description": "Mastering Fundamental & Technical Analysis",
+      "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "boardroom-reality",
@@ -124,7 +130,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Putting Management Theories to Work"
+      "description": "Putting Management Theories to Work",
+      "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "macro-to-market",
@@ -137,7 +144,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Applied Economics for Financial Careers"
+      "description": "Applied Economics for Financial Careers",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-monetary-triad",
@@ -152,7 +160,8 @@ export const COMPANY = {
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest",
         "Employees in financial services and general public with academic interest"
       ],
-      "description": "Navigating Money, Inflation & Rates"
+      "description": "Navigating Money, Inflation & Rates",
+      "image": "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-street-smart-leader",
@@ -165,7 +174,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Real-World Execution Beyond the MBA"
+      "description": "Real-World Execution Beyond the MBA",
+      "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "shielding-your-wealth",
@@ -178,7 +188,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
       ],
-      "description": "Smart Risk Management in Personal Finance"
+      "description": "Smart Risk Management in Personal Finance",
+      "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "wealthtech-2-0",
@@ -193,7 +204,8 @@ export const COMPANY = {
         "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors",
         "Bank and life insurance employees — Frontline & Level 1"
       ],
-      "description": "Mastering AI-Powered Personal Finance"
+      "description": "Mastering AI-Powered Personal Finance",
+      "image": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-ai-augmented-professional",
@@ -206,7 +218,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Thriving in Next-Gen Workplaces"
+      "description": "Thriving in Next-Gen Workplaces",
+      "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "hire-ready-in-the-age-of-ai",
@@ -219,7 +232,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Skills Algorithms Can't Replace"
+      "description": "Skills Algorithms Can't Replace",
+      "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-problem-solvers-toolkit",
@@ -232,7 +246,8 @@ export const COMPANY = {
       "audience": [
         "Students of UG, PG and professional courses in Economics and Finance"
       ],
-      "description": "Turning Academic Frameworks into Solutions"
+      "description": "Turning Academic Frameworks into Solutions",
+      "image": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "macro-to-branch",
@@ -245,7 +260,8 @@ export const COMPANY = {
       "audience": [
         "Bank employees — Officers to Chief Manager level"
       ],
-      "description": "Applied Economics for Modern Bankers"
+      "description": "Applied Economics for Modern Bankers",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "the-protection-economy",
@@ -258,7 +274,8 @@ export const COMPANY = {
       "audience": [
         "Life and health insurance employees — Frontline to Level 3"
       ],
-      "description": "Applied Economics for Insurance Leaders"
+      "description": "Applied Economics for Insurance Leaders",
+      "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "why-clients-buy",
@@ -271,7 +288,8 @@ export const COMPANY = {
       "audience": [
         "Banking and insurance employees — Frontline to Level 2"
       ],
-      "description": "The Science of Financial Decisions"
+      "description": "The Science of Financial Decisions",
+      "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "value-multipliers",
@@ -284,7 +302,8 @@ export const COMPANY = {
       "audience": [
         "Frontline and Level 1 managers in the financial services industry"
       ],
-      "description": "Designing High-LTV Sales Funnels"
+      "description": "Designing High-LTV Sales Funnels",
+      "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "frictionless-closing",
@@ -297,7 +316,8 @@ export const COMPANY = {
       "audience": [
         "Bank employees — Officers to Manager level"
       ],
-      "description": "Overcoming Objections in Retail & Corporate Banking Sales"
+      "description": "Overcoming Objections in Retail & Corporate Banking Sales",
+      "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "objection-to-conviction",
@@ -310,7 +330,8 @@ export const COMPANY = {
       "audience": [
         "Life insurance employees — Frontline to Level 1"
       ],
-      "description": "Selling Peace of Mind with Confidence"
+      "description": "Selling Peace of Mind with Confidence",
+      "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "nudge-close",
@@ -323,7 +344,8 @@ export const COMPANY = {
       "audience": [
         "Frontline employees to Level 3 managers"
       ],
-      "description": "Behavioral Science for High-Performing Sales Teams"
+      "description": "Behavioral Science for High-Performing Sales Teams",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "guardrails-of-growth",
@@ -336,7 +358,8 @@ export const COMPANY = {
       "audience": [
         "Bank employees — Managers and above"
       ],
-      "description": "Strategic Risk Management for Bankers"
+      "description": "Strategic Risk Management for Bankers",
+      "image": "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "shielding-value",
@@ -349,7 +372,8 @@ export const COMPANY = {
       "audience": [
         "Insurance employees — Managers and above"
       ],
-      "description": "Modern Risk Frameworks for Insurers"
+      "description": "Modern Risk Frameworks for Insurers",
+      "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=70"
     },
     {
       "slug": "high-performance-zero-burnout",
@@ -362,7 +386,8 @@ export const COMPANY = {
       "audience": [
         "Employees in any industry and level of employment"
       ],
-      "description": "Workplace Resilience & Wellbeing"
+      "description": "Workplace Resilience & Wellbeing",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=70"
     }
   ],
   challenges: [

@@ -1,30 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Clock, BarChart3, Tag, ArrowRight, Users, Briefcase, GraduationCap } from "lucide-react";
+import { Clock, BarChart3, Tag, ArrowRight, Users, Briefcase, GraduationCap, LayoutGrid } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 
-const SECTIONS = [
-  {
-    segment: "Corporate",
-    icon: Briefcase,
-    title: "For Corporate Teams",
-    description: "Capability-building programs for working professionals and enterprise teams.",
-  },
-  {
-    segment: "Students & Public",
-    icon: GraduationCap,
-    title: "For Students, Public & Investors",
-    description: "Career-readiness and foundational programs for students and early-career learners.",
-  },
+const TOGGLES = [
+  { key: "All", label: "All Programs", icon: LayoutGrid },
+  { key: "Corporate", label: "Corporate", icon: Briefcase },
+  { key: "Students & Public", label: "Students, Public & Investors", icon: GraduationCap },
 ];
 
 export default function Courses() {
   const COMPANY = useCompany();
-  const courses = COMPANY.courses || [];
+  const [segment, setSegment] = useState("All");
+  const allCourses = COMPANY.courses || [];
+  const courses = allCourses.filter(
+    (c) => segment === "All" || !c.segments || c.segments.includes(segment)
+  );
 
   return (
     <Layout>
@@ -37,7 +32,7 @@ export default function Courses() {
         <div className="absolute top-[10%] left-[50%] -translate-x-1/2 w-[80%] h-[25rem] bg-gradient-to-r from-yellow-500/10 via-yellow-600/5 to-transparent rounded-full blur-[6.25rem] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }} className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-yellow-400 tracking-widest uppercase mb-4">
               Bumble Bee Centre of Excellence
             </motion.div>
@@ -49,56 +44,49 @@ export default function Courses() {
             </motion.p>
           </div>
 
-          <div className="space-y-24">
-            {SECTIONS.map((section) => {
-              const sectionCourses = courses.filter((c) => c.segments?.includes(section.segment));
-              if (sectionCourses.length === 0) return null;
-              const Icon = section.icon;
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {TOGGLES.map((t) => {
+              const Icon = t.icon;
+              const active = segment === t.key;
               return (
-                <div key={section.segment}>
-                  <motion.div
-                    initial="hidden"
-                    whileInView="show"
-                    variants={fadeUp}
-                    viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 pb-6 border-b border-white/10"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center shrink-0">
-                        <Icon size={22} className="text-yellow-400" />
-                      </div>
-                      <div>
-                        <h2 className="text-2xl font-black tracking-tight">{section.title}</h2>
-                        <p className="text-sm text-slate-400 font-light mt-0.5">{section.description}</p>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0">
-                      {sectionCourses.length} Program{sectionCourses.length !== 1 ? "s" : ""}
-                    </span>
-                  </motion.div>
-
-                  <motion.div
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                    initial="hidden"
-                    whileInView="show"
-                    variants={stagger}
-                    viewport={{ once: true, margin: "-50px" }}
-                  >
-                    {sectionCourses.map((course) => (
-                      <CourseCard key={course.slug} course={course} />
-                    ))}
-                  </motion.div>
-                </div>
+                <button
+                  key={t.key}
+                  onClick={() => setSegment(t.key)}
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold border transition-colors ${
+                    active
+                      ? "bg-yellow-400 text-black border-yellow-400"
+                      : "bg-white/5 text-slate-300 border-white/10 hover:border-yellow-400/40"
+                  }`}
+                >
+                  <Icon size={15} />
+                  {t.label}
+                </button>
               );
             })}
           </div>
+
+          <motion.div
+            key={segment}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
+            {courses.map((course) => (
+              <CourseCard key={course.slug} course={course} />
+            ))}
+          </motion.div>
+
+          {courses.length === 0 && (
+            <p className="text-center text-slate-500 py-16">No courses in this category yet.</p>
+          )}
 
           <motion.p
             initial="hidden"
             whileInView="show"
             variants={fadeUp}
             viewport={{ once: true }}
-            className="text-center text-sm text-slate-500 font-light mt-20"
+            className="text-center text-sm text-slate-500 font-light mt-16"
           >
             These courses are launching soon on the Bumble Bee Centre of Excellence. Reach out via our <Link to="/contact" className="text-yellow-400 hover:underline">contact page</Link> to be notified first.
           </motion.p>
