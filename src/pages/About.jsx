@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 import logo from "../assets/bumblebee-logo.jpg";
 
@@ -36,6 +36,7 @@ export default function About() {
 
 /* ---------------- ABOUT ---------------- */
 function AboutSection() {
+  const COMPANY = useCompany();
   return (
     <section className="pt-32 pb-24 relative bg-[#030712] overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-[31.25rem] bg-gradient-to-bl from-yellow-500/5 to-transparent rounded-bl-full blur-3xl pointer-events-none"></div>
@@ -87,7 +88,7 @@ function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/20 to-transparent rounded-[3rem] blur-2xl animate-pulse"></div>
             <div className="relative h-full w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] shadow-2xl overflow-hidden p-8 flex items-center justify-center transform transition-transform hover:scale-[1.02] duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 mix-blend-overlay"></div>
-              <img src={logo} alt="BumbleBee Corporate Solutions" className="w-full h-full object-contain filter drop-shadow-[0_0_1.25rem_rgba(255,255,255,0.1)] relative z-10" />
+              <img src={COMPANY.logoUrl || logo} alt="BumbleBee Corporate Solutions" className="w-full h-full object-contain filter drop-shadow-[0_0_1.25rem_rgba(255,255,255,0.1)] relative z-10" />
             </div>
           </div>
         </motion.div>
@@ -117,6 +118,7 @@ const HANDLES = [
 ];
 
 function TransitionCatalyst() {
+  const COMPANY = useCompany();
   const [active, setActive] = useState("corporate");
   const current = HANDLES.find((h) => h.key === active);
 
@@ -392,9 +394,9 @@ function TransitionCatalyst() {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#0a0a0a] border-2 border-yellow-400/50 shadow-[0_0_2.5rem_rgba(250,204,21,0.3)] flex items-center justify-center p-3"
+                  className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white border-2 border-yellow-400/50 ring-1 ring-inset ring-black/30 shadow-[0_0_2.5rem_rgba(250,204,21,0.3)] flex items-center justify-center p-3"
                 >
-                  <img src={logo} alt="Bumble Bee" className="w-full h-full object-contain" />
+                  <img src={COMPANY.logoUrl || logo} alt="Bumble Bee" className="w-full h-full object-contain" />
                 </motion.div>
               </AnimatePresence>
 

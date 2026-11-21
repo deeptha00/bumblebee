@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import logo from "../assets/bumblebee-logo.jpg";
 
 export default function Footer() {
+  const COMPANY = useCompany();
   return (
     <footer className="bg-[#030712] border-t border-white/5 pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-white p-1.5 shadow-[0_0_0.9375rem_rgba(255,255,255,0.1)]">
-              <img src={logo} alt="logo" className="w-full h-full object-contain" />
+              <img src={COMPANY.logoUrl || logo} alt="logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="text-white font-bold tracking-wide">{COMPANY.name}</div>

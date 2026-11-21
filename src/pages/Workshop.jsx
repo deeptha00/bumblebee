@@ -17,6 +17,7 @@ import {
     BookOpen
 } from "lucide-react";
 import logo from "../assets/bumblebee-logo.jpg";
+import { useCompany } from "../context/companyContextCore";
 
 // ---------- Animation variants ----------
 const fadeUp = {
@@ -30,6 +31,7 @@ const stagger = {
 };
 
 export default function Workshop() {
+    const COMPANY = useCompany();
     const [step, setStep] = useState("LANDING"); // LANDING, REGISTER, PAYMENT, SUCCESS
     const [formData, setFormData] = useState({ name: "", email: "", whatsapp: "" });
     const [serverAwake, setServerAwake] = useState(false);
@@ -98,7 +100,7 @@ export default function Workshop() {
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl overflow-hidden bg-white p-1 shadow-[0_0_0.9375rem_rgba(255,255,255,0.1)]">
-                            <img src={logo} alt="BumbleBee" className="w-full h-full object-contain" />
+                            <img src={COMPANY.logoUrl || logo} alt="BumbleBee" className="w-full h-full object-contain" />
                         </div>
                         <span className="font-bold text-xl tracking-tight">BumbleBee <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">Workshop</span></span>
                     </div>

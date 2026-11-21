@@ -5,7 +5,7 @@ import { Building2, Users, GraduationCap, Award, ArrowRight } from "lucide-react
 import Gallery from "../gallery";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 
 export default function Home() {
@@ -26,6 +26,7 @@ export default function Home() {
 
 /* ---------------- HERO ---------------- */
 function Hero() {
+  const COMPANY = useCompany();
   return (
     <section id="hero" className="min-h-screen relative flex items-center pt-24 pb-20 overflow-hidden bg-[#030712]">
 
@@ -104,6 +105,7 @@ function Hero() {
 
 /* ---------------- OVERVIEW TEASERS ---------------- */
 function OverviewTeasers() {
+  const COMPANY = useCompany();
   const cards = [
     {
       to: "/about",

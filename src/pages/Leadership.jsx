@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { Award } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 
 export default function Leadership() {
+  const COMPANY = useCompany();
   return (
     <Layout>
       <SEO

@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, GraduationCap, Award, TrendingUp, Building2, Settings, CheckCircle } from "lucide-react";
+import { Users, GraduationCap, Award, TrendingUp, Building2, Settings, CheckCircle, ArrowRight } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 
 export default function Services() {
@@ -22,6 +23,7 @@ export default function Services() {
 
 /* ---------------- SERVICES ---------------- */
 function ServicesSection() {
+  const COMPANY = useCompany();
   return (
     <section className="pt-32 pb-24 relative bg-[#030712] text-white overflow-hidden">
       <div className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[80%] h-[31.25rem] bg-gradient-to-r from-yellow-500/10 via-yellow-600/5 to-transparent rounded-full blur-[6.25rem] pointer-events-none"></div>
@@ -107,7 +109,7 @@ function ServicesSection() {
               </div>
               <h2 className="text-2xl font-bold mb-4 tracking-tight">Bumble Bee Centre of Excellence</h2>
               <p className="text-slate-400 text-sm leading-relaxed font-light mb-8">A dedicated digital knowledge hub delivering continuous, self-paced upskilling for students, faculty, and industry professionals.</p>
-              <ul className="mt-auto space-y-3">
+              <ul className="space-y-3">
                 {COMPANY.services.centreOfExcellence.map((s) => (
                   <li key={s} className="flex items-start gap-2 text-sm text-slate-300">
                     <div className="mt-1 w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></div>
@@ -115,6 +117,12 @@ function ServicesSection() {
                   </li>
                 ))}
               </ul>
+              <Link
+                to="/courses"
+                className="mt-8 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 text-sm font-bold hover:bg-emerald-400 hover:text-black transition-all duration-300"
+              >
+                Browse Courses <ArrowRight size={14} />
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -125,6 +133,7 @@ function ServicesSection() {
 
 /* ---------------- KEY CHALLENGES ---------------- */
 function KeyChallenges() {
+  const COMPANY = useCompany();
   return (
     <section className="py-24 bg-[#010308] text-white relative">
       <div className="max-w-7xl mx-auto px-6 relative z-10">

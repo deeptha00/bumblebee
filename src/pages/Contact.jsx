@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Briefcase, ArrowRight } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp, stagger } from "../utils/motion";
 
 export default function Contact() {
+  const COMPANY = useCompany();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
 

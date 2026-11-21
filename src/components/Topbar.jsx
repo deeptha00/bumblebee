@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import logo from "../assets/bumblebee-logo.jpg";
 
 const NAV_LINKS = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/courses", label: "Courses" },
   { to: "/industries", label: "Industries" },
   { to: "/leadership", label: "Leadership" },
   { to: "/careers", label: "Careers" },
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 ];
 
 export default function Topbar() {
+  const COMPANY = useCompany();
   const [isOpen, setIsOpen] = useState(false);
 
   const linkClass = ({ isActive }) =>
@@ -26,7 +28,7 @@ export default function Topbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-3 z-50">
             <div className="w-11 h-11 rounded-lg overflow-hidden shadow-md bg-white p-1">
-              <img src={logo} alt="BumbleBee Corporate Solutions Logo" className="w-full h-full object-contain" />
+              <img src={COMPANY.logoUrl || logo} alt="BumbleBee Corporate Solutions Logo" className="w-full h-full object-contain" />
             </div>
             <div className="text-white font-semibold leading-tight">
               <div className="text-base">{COMPANY.short} </div>

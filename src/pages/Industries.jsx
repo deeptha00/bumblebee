@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { Building2, Briefcase, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { COMPANY } from "../data/company";
+import { useCompany } from "../context/companyContextCore";
 import { fadeUp } from "../utils/motion";
 
 export default function Industries() {
+  const COMPANY = useCompany();
   return (
     <Layout>
       <SEO
