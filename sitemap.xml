@@ -19,6 +19,48 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://bumblebeeindia.com/courses</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/bfsi-technical-mastery</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/consultative-sales-negotiation</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/workplace-behavioural-skills</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/managerial-fundamentals</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/retail-financial-planning</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/behavioural-economics-finance</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://bumblebeeindia.com/industries</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
