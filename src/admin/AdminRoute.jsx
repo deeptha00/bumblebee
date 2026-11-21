@@ -11,7 +11,7 @@ export default function AdminRoute({ children }) {
 
   if (status === "checking") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">
+      <div className="min-h-screen flex items-center justify-center bg-[#030712] text-slate-400">
         Checking admin session…
       </div>
     );
