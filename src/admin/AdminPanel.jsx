@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  LayoutDashboard,
+  Sparkles,
   Phone,
   Briefcase,
   GraduationCap,
@@ -28,16 +28,108 @@ import IndustriesSection from "./sections/IndustriesSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import LeadersSection from "./sections/LeadersSection";
 
-const TABS = [
-  { key: "general", label: "General & Brand", icon: LayoutDashboard, Component: GeneralSection },
-  { key: "contact", label: "Contact Details", icon: Phone, Component: ContactSection },
-  { key: "services", label: "Services", icon: Briefcase, Component: ServicesSection },
-  { key: "courses", label: "Courses", icon: GraduationCap, Component: CoursesSection },
-  { key: "challenges", label: "Challenges", icon: ShieldAlert, Component: ChallengesSection },
-  { key: "industries", label: "Industries", icon: Globe2, Component: IndustriesSection },
-  { key: "testimonials", label: "Testimonials", icon: Quote, Component: TestimonialsSection },
-  { key: "leaders", label: "Leadership", icon: Users, Component: LeadersSection },
+const GROUPS = [
+  {
+    label: "Brand & Basics",
+    accent: "yellow",
+    tabs: [
+      {
+        key: "general",
+        label: "General & Brand",
+        blurb: "Logo, name, tagline, about & vision",
+        icon: Sparkles,
+        Component: GeneralSection,
+      },
+      {
+        key: "contact",
+        label: "Contact Details",
+        blurb: "Phone, email, address & website",
+        icon: Phone,
+        Component: ContactSection,
+      },
+    ],
+  },
+  {
+    label: "What You Offer",
+    accent: "blue",
+    tabs: [
+      {
+        key: "services",
+        label: "Services",
+        blurb: "Your three practice areas",
+        icon: Briefcase,
+        Component: ServicesSection,
+      },
+      {
+        key: "courses",
+        label: "Courses",
+        blurb: "Add, edit, or remove courses",
+        icon: GraduationCap,
+        Component: CoursesSection,
+      },
+    ],
+  },
+  {
+    label: "Proof & People",
+    accent: "violet",
+    tabs: [
+      {
+        key: "challenges",
+        label: "Challenges We Solve",
+        blurb: "Business problems & solutions",
+        icon: ShieldAlert,
+        Component: ChallengesSection,
+      },
+      {
+        key: "industries",
+        label: "Industries",
+        blurb: "Sectors you serve",
+        icon: Globe2,
+        Component: IndustriesSection,
+      },
+      {
+        key: "testimonials",
+        label: "Testimonials",
+        blurb: "Client quotes",
+        icon: Quote,
+        Component: TestimonialsSection,
+      },
+      {
+        key: "leaders",
+        label: "Leadership",
+        blurb: "Team photos & bios",
+        icon: Users,
+        Component: LeadersSection,
+      },
+    ],
+  },
 ];
+
+const ACCENTS = {
+  yellow: {
+    dot: "bg-yellow-400",
+    activeBg: "bg-yellow-50",
+    activeText: "text-yellow-800",
+    activeIcon: "bg-yellow-400 text-slate-900",
+    idleIcon: "bg-yellow-50 text-yellow-600",
+  },
+  blue: {
+    dot: "bg-blue-400",
+    activeBg: "bg-blue-50",
+    activeText: "text-blue-800",
+    activeIcon: "bg-blue-400 text-white",
+    idleIcon: "bg-blue-50 text-blue-600",
+  },
+  violet: {
+    dot: "bg-violet-400",
+    activeBg: "bg-violet-50",
+    activeText: "text-violet-800",
+    activeIcon: "bg-violet-400 text-white",
+    idleIcon: "bg-violet-50 text-violet-600",
+  },
+};
+
+const ALL_TABS = GROUPS.flatMap((g) => g.tabs.map((t) => ({ ...t, accent: g.accent })));
 
 export default function AdminPanel() {
   const [content, setContent] = useState(null);
@@ -66,7 +158,7 @@ export default function AdminPanel() {
     setStatus(null);
     try {
       await saveContent(content);
-      setStatus({ type: "success", message: "Changes saved. The live site will reflect these on next page load." });
+      setStatus({ type: "success", message: "Saved! Changes are live." });
       setDirty(false);
     } catch (err) {
       setStatus({ type: "error", message: err.message || "Failed to save changes." });
@@ -82,88 +174,119 @@ export default function AdminPanel() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">
-        <Loader2 className="animate-spin mr-2" size={18} /> Loading content…
+      <div className="h-screen flex items-center justify-center bg-slate-50 text-slate-500 gap-2">
+        <Loader2 className="animate-spin" size={18} /> Loading content…
       </div>
     );
   }
 
   if (!content) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-red-600">
+      <div className="h-screen flex items-center justify-center bg-slate-50 text-red-600 px-6 text-center">
         Could not load site content. Is the backend server running?
       </div>
     );
   }
 
-  const ActiveComponent = TABS.find((t) => t.key === activeTab)?.Component;
+  const activeMeta = ALL_TABS.find((t) => t.key === activeTab);
+  const ActiveComponent = activeMeta?.Component;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col">
-        <div className="flex items-center gap-3 px-5 py-5 border-b border-slate-100">
+    <div className="h-screen flex bg-slate-100 overflow-hidden">
+      {/* Sidebar — fixed to viewport height, scrolls independently */}
+      <aside className="w-72 h-screen flex flex-col bg-white border-r border-slate-200 shrink-0">
+        <div className="flex items-center gap-3 px-5 py-5 border-b border-slate-100 shrink-0">
           <img
             src={content.logoUrl || logo}
             alt="Logo"
-            className="w-10 h-10 rounded-full object-cover border border-slate-200"
+            className="w-10 h-10 rounded-full object-cover border border-slate-200 shrink-0"
           />
-          <div>
-            <div className="text-sm font-bold text-slate-800 leading-tight">{content.short || "Bumble Bee"}</div>
+          <div className="min-w-0">
+            <div className="text-sm font-bold text-slate-800 leading-tight truncate">
+              {content.short || "Bumble Bee"}
+            </div>
             <div className="text-xs text-slate-400">Admin Panel</div>
           </div>
         </div>
 
-        <nav className="flex-1 overflow-y-auto py-3">
-          {TABS.map((tab) => {
-            const Icon = tab.icon;
-            const active = tab.key === activeTab;
+        <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-5">
+          {GROUPS.map((group) => {
+            const colors = ACCENTS[group.accent];
             return (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`w-full flex items-center gap-3 px-5 py-2.5 text-sm font-medium transition-colors ${
-                  active
-                    ? "bg-yellow-50 text-slate-900 border-r-2 border-yellow-400"
-                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-800"
-                }`}
-              >
-                <Icon size={17} />
-                {tab.label}
-              </button>
+              <div key={group.label}>
+                <div className="flex items-center gap-2 px-2 mb-2">
+                  <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    {group.label}
+                  </span>
+                </div>
+                <div className="space-y-1">
+                  {group.tabs.map((tab) => {
+                    const Icon = tab.icon;
+                    const active = tab.key === activeTab;
+                    return (
+                      <button
+                        key={tab.key}
+                        onClick={() => setActiveTab(tab.key)}
+                        className={`w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-left transition-colors ${
+                          active ? colors.activeBg : "hover:bg-slate-50"
+                        }`}
+                      >
+                        <span
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                            active ? colors.activeIcon : colors.idleIcon
+                          }`}
+                        >
+                          <Icon size={15} />
+                        </span>
+                        <span className="min-w-0">
+                          <div
+                            className={`text-sm font-semibold leading-tight truncate ${
+                              active ? colors.activeText : "text-slate-700"
+                            }`}
+                          >
+                            {tab.label}
+                          </div>
+                          <div className="text-[11px] text-slate-400 truncate">{tab.blurb}</div>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-slate-100 space-y-2">
+        <div className="p-3 border-t border-slate-100 space-y-1.5 shrink-0">
           <a
             href="/"
             target="_blank"
             rel="noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 border border-slate-200"
+            className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 border border-slate-200 transition-colors"
           >
-            <ExternalLink size={14} /> View site
+            <ExternalLink size={14} /> View live site
           </a>
           <button
             onClick={handleLogout}
-            className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 border border-red-100"
+            className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 border border-red-100 transition-colors"
           >
             <LogOut size={14} /> Log out
           </button>
         </div>
       </aside>
 
-      {/* Main content */}
-      <main className="flex-1 flex flex-col">
-        <header className="sticky top-0 z-10 bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-base font-bold text-slate-800">Website Content Editor</h1>
-            <p className="text-xs text-slate-400">Edit any section, then click Save to publish changes.</p>
+      {/* Main content — scrolls independently of the sidebar */}
+      <main className="flex-1 h-screen flex flex-col min-w-0">
+        <header className="shrink-0 bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-base font-bold text-slate-800 truncate">{activeMeta?.label}</h1>
+            <p className="text-xs text-slate-400 truncate">{activeMeta?.blurb}</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             {status && (
               <div
-                className={`flex items-center gap-1.5 text-sm font-medium ${
+                className={`hidden sm:flex items-center gap-1.5 text-sm font-medium ${
                   status.type === "success" ? "text-green-600" : "text-red-600"
                 }`}
               >
@@ -174,15 +297,24 @@ export default function AdminPanel() {
             <button
               onClick={handleSave}
               disabled={saving || !dirty}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-400 text-slate-900 font-bold text-sm hover:bg-yellow-300 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-yellow-400 text-slate-900 font-bold text-sm hover:bg-yellow-300 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
               {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
               {saving ? "Saving…" : "Save Changes"}
+              {dirty && !saving && (
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white" />
+              )}
             </button>
           </div>
         </header>
 
-        <div className="p-8 max-w-3xl">{ActiveComponent && <ActiveComponent content={content} update={update} />}</div>
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-8 max-w-3xl">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+              {ActiveComponent && <ActiveComponent content={content} update={update} />}
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );

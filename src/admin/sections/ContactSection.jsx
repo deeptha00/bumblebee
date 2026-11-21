@@ -8,7 +8,6 @@ export default function ContactSection({ content, update }) {
   }
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Contact Details</h2>
 
       <Field label="Phone numbers">
         <SimpleListEditor

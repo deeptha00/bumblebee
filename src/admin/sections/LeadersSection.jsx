@@ -18,7 +18,6 @@ export default function LeadersSection({ content, update }) {
 
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Leadership</h2>
       {leaders.map((l, i) => (
         <Card key={i} title={l.name || `Leader ${i + 1}`} onRemove={() => removeItem(i)}>
           <Field label="Photo">

@@ -18,7 +18,6 @@ export default function TestimonialsSection({ content, update }) {
 
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Testimonials</h2>
       {testimonials.map((t, i) => (
         <Card key={i} onRemove={() => removeItem(i)}>
           <Field label="Quote">

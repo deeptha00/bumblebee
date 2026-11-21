@@ -4,7 +4,6 @@ import { Field, TextInput, TextArea, ImageUploader, SimpleListEditor } from "../
 export default function GeneralSection({ content, update }) {
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">General & Brand</h2>
 
       <Field label="Logo" hint="Shown in the site header, footer, and workshop page.">
         <ImageUploader value={content.logoUrl} onChange={(v) => update("logoUrl", v)} shape="round" />

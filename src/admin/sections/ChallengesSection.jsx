@@ -18,7 +18,6 @@ export default function ChallengesSection({ content, update }) {
 
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Business Challenges We Solve</h2>
       {challenges.map((c, i) => (
         <Card key={i} onRemove={() => removeItem(i)}>
           <Field label="Challenge title">

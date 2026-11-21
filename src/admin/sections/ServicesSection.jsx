@@ -8,7 +8,6 @@ export default function ServicesSection({ content, update }) {
   }
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Services</h2>
 
       <Field label="Corporate Learning">
         <SimpleListEditor

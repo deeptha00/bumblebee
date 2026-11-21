@@ -48,7 +48,6 @@ export default function CoursesSection({ content, update }) {
 
   return (
     <div>
-      <h2 className="text-lg font-bold text-slate-800 mb-4">Courses</h2>
       {courses.map((c, i) => (
         <Card key={i} title={c.title || `Course ${i + 1}`} onRemove={() => removeItem(i)}>
           <Field label="Course image">
