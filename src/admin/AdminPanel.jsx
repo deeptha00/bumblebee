@@ -198,7 +198,7 @@ export default function AdminPanel() {
           </div>
         </div>
 
-        <nav className="relative flex-1 overflow-y-auto py-5 px-3 space-y-6">
+        <nav className="admin-scroll relative flex-1 overflow-y-auto py-5 px-3 space-y-6">
           {GROUPS.map((group) => {
             const colors = ACCENTS[group.accent];
             return (
@@ -217,14 +217,17 @@ export default function AdminPanel() {
                       <button
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key)}
-                        className={`w-full flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-left transition-all ${
-                          active ? "bg-white/[0.07] shadow-inner" : "hover:bg-white/[0.04]"
+                        className={`relative w-full flex items-center gap-3 pl-3.5 pr-2.5 py-2.5 rounded-xl text-left transition-colors ${
+                          active ? "bg-slate-800/80" : "hover:bg-white/5"
                         }`}
                       >
+                        {active && (
+                          <span className="absolute left-0 top-2 bottom-2 w-1 rounded-full bg-yellow-400" />
+                        )}
                         <span
-                          className={`relative w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all ${
+                          className={`relative w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                             active
-                              ? "bg-gradient-to-br from-yellow-300 to-yellow-500 text-slate-900 shadow-[0_0_0.75rem_rgba(250,204,21,0.45)]"
+                              ? "bg-gradient-to-br from-yellow-300 to-yellow-500 text-slate-900 shadow-[0_0_0.5rem_rgba(250,204,21,0.4)]"
                               : "bg-white/5 text-slate-400"
                           }`}
                         >
@@ -306,7 +309,7 @@ export default function AdminPanel() {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto bg-gradient-to-b from-slate-50 to-slate-100">
+        <div className="admin-scroll flex-1 overflow-y-auto bg-gradient-to-b from-slate-50 to-slate-100">
           <div className="p-8 max-w-3xl">
             <div className="bg-white rounded-[2rem] border border-slate-200 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.25)] p-6 sm:p-9">
               {ActiveComponent && <ActiveComponent content={content} update={update} />}
