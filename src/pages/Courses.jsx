@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Clock, BarChart3, Tag, ArrowRight } from "lucide-react";
+import { Clock, BarChart3, Tag, ArrowRight, Users } from "lucide-react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import { useCompany } from "../context/companyContextCore";
@@ -9,6 +9,11 @@ import { fadeUp, stagger } from "../utils/motion";
 
 export default function Courses() {
   const COMPANY = useCompany();
+  const [segment, setSegment] = useState("All");
+  const segments = ["All", "Students & Public", "Corporate"];
+  const courses = COMPANY.courses.filter(
+    (c) => segment === "All" || !c.segments || c.segments.includes(segment)
+  );
   return (
     <Layout>
       <SEO
@@ -32,14 +37,31 @@ export default function Courses() {
             </motion.p>
           </div>
 
+          <div className="flex justify-center gap-2 mb-10">
+            {segments.map((s) => (
+              <button
+                key={s}
+                onClick={() => setSegment(s)}
+                className={`px-5 py-2 rounded-full text-sm font-semibold border transition-colors ${
+                  segment === s
+                    ? "bg-yellow-400 text-black border-yellow-400"
+                    : "bg-white/5 text-slate-300 border-white/10 hover:border-yellow-400/40"
+                }`}
+              >
+                {s === "Students & Public" ? "Students / General Public / Investors" : s}
+              </button>
+            ))}
+          </div>
+
           <motion.div
+            key={segment}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="show"
             variants={stagger}
             viewport={{ once: true, margin: "-50px" }}
           >
-            {COMPANY.courses.map((course) => (
+            {courses.map((course) => (
               <motion.div key={course.slug} variants={fadeUp} whileHover={{ y: -6 }}>
                 <Link
                   to={`/courses/${course.slug}`}
@@ -50,26 +72,39 @@ export default function Courses() {
 
                   <div className="relative h-full rounded-3xl bg-black/40 backdrop-blur-md flex flex-col z-10">
                     <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
+                      {course.image ? (
+                        <img
+                          src={course.image}
+                          alt={course.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-yellow-500/20 via-[#111] to-black" />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                       <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white text-[0.65rem] font-bold uppercase tracking-widest border border-white/20">
                         <Tag size={11} /> {course.category}
                       </span>
-                      <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-yellow-400 text-black text-xs font-bold">{course.price}</span>
+                      {course.price && (
+                        <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-yellow-400 text-black text-xs font-bold">{course.price}</span>
+                      )}
                     </div>
 
                     <div className="p-7 flex flex-col flex-1">
                       <h2 className="font-bold text-xl text-white mb-2 leading-snug">{course.title}</h2>
                       <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">{course.description}</p>
 
-                      <div className="mt-auto flex items-center gap-4 text-xs text-slate-500 font-medium pt-4 border-t border-white/5">
-                        <span className="flex items-center gap-1.5"><Clock size={13} /> {course.duration}</span>
-                        <span className="flex items-center gap-1.5"><BarChart3 size={13} /> {course.level}</span>
-                      </div>
+                      {course.audience?.length > 0 && (
+                        <div className="mt-auto flex items-start gap-1.5 text-xs text-slate-500 font-medium pt-4 border-t border-white/5">
+                          <Users size={13} className="mt-0.5 flex-shrink-0" /> <span>{course.audience.join(" · ")}</span>
+                        </div>
+                      )}
+                      {(course.duration || course.level) && (
+                        <div className="mt-auto flex items-center gap-4 text-xs text-slate-500 font-medium pt-4 border-t border-white/5">
+                          {course.duration && <span className="flex items-center gap-1.5"><Clock size={13} /> {course.duration}</span>}
+                          {course.level && <span className="flex items-center gap-1.5"><BarChart3 size={13} /> {course.level}</span>}
+                        </div>
+                      )}
                       <div className="mt-4 flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{course.format}</span>
                         <span className="flex items-center gap-1.5 text-sm font-semibold text-yellow-400">

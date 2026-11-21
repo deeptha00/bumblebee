@@ -35,106 +35,333 @@
   },
   "courses": [
     {
-      "slug": "bfsi-technical-mastery",
-      "title": "BFSI Technical & Domain Mastery",
-      "category": "Certification",
-      "format": "Self-paced",
-      "duration": "6 Weeks",
-      "level": "Beginner–Intermediate",
-      "price": "₹2,499",
-      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=70",
-      "description": "Core banking operations, insurance mechanisms, and wealth management concepts for frontline BFSI professionals.",
-      "outcomes": [
-        "Understand core banking operations and retail product structures",
-        "Navigate life and general insurance mechanisms with confidence",
-        "Apply wealth management concepts in client conversations",
-        "Stay current on regulatory requirements (RBI, IRDAI, SEBI)"
-      ]
+      "slug": "campus-to-capital",
+      "title": "Campus to Capital",
+      "subtitle": "Mastering the Core of Finance",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Mastering the Core of Finance"
     },
     {
-      "slug": "consultative-sales-negotiation",
-      "title": "Consultative Sales & Negotiation",
-      "category": "Certification",
-      "format": "Blended",
-      "duration": "4 Weeks",
-      "level": "Intermediate",
-      "price": "₹1,999",
-      "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=70",
-      "description": "Objection handling, client-centric selling frameworks, and negotiation tactics that convert conversations into revenue.",
-      "outcomes": [
-        "Master consultative, client-centric selling frameworks",
-        "Handle objections with confidence and empathy",
-        "Apply negotiation tactics that protect margin and relationship",
-        "Build a repeatable pipeline-to-close conversation structure"
-      ]
+      "slug": "bfsi-launchpad",
+      "title": "BFSI Launchpad",
+      "subtitle": "Domain Mastery for Commerce & Econ Grads",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Domain Mastery for Commerce & Econ Grads"
     },
     {
-      "slug": "workplace-behavioural-skills",
-      "title": "Workplace Behavioural Skills",
-      "category": "Short Course",
-      "format": "Self-paced",
-      "duration": "2 Weeks",
-      "level": "All Levels",
-      "price": "Free",
-      "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=70",
-      "description": "Workplace etiquette, communication, and emotional intelligence essentials for early-career professionals.",
-      "outcomes": [
-        "Communicate clearly and professionally across teams",
-        "Build emotional intelligence for everyday workplace situations",
-        "Practice workplace etiquette expected by modern employers",
-        "Collaborate more effectively in cross-functional settings"
-      ]
+      "slug": "where-capital-meets-opportunity",
+      "title": "Where Capital Meets Opportunity",
+      "subtitle": "Decoding Financial Markets",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest"
+      ],
+      "description": "Decoding Financial Markets"
     },
     {
-      "slug": "managerial-fundamentals",
-      "title": "Managerial Fundamentals",
-      "category": "Certification",
-      "format": "Blended",
-      "duration": "5 Weeks",
-      "level": "Intermediate–Advanced",
-      "price": "₹2,999",
-      "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=70",
-      "description": "Decision-making, team coaching, and front-line managerial effectiveness modules for new and aspiring managers.",
-      "outcomes": [
-        "Make sound decisions under pressure and ambiguity",
-        "Coach and develop team members for sustained performance",
-        "Run effective one-on-ones and performance conversations",
-        "Lead with clear, consistent communication"
-      ]
+      "slug": "the-equity-engine",
+      "title": "The Equity Engine",
+      "subtitle": "How Stock Markets Build & Measure Value",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest"
+      ],
+      "description": "How Stock Markets Build & Measure Value"
     },
     {
-      "slug": "retail-financial-planning",
-      "title": "Retail Financial Planning",
-      "category": "Certification",
-      "format": "Self-paced",
-      "duration": "3 Weeks",
-      "level": "Beginner",
-      "price": "₹1,499",
-      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=70",
-      "description": "Personal financial planning fundamentals, applied to retail banking and insurance advisory conversations.",
-      "outcomes": [
-        "Explain personal financial planning fundamentals clearly to clients",
-        "Map retail banking and insurance products to client goals",
-        "Build simple, actionable financial plans for everyday customers",
-        "Avoid common advisory pitfalls and compliance missteps"
-      ]
+      "slug": "mind-over-market",
+      "title": "Mind Over Market",
+      "subtitle": "The Psychology of Smart Investing",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
+      ],
+      "description": "The Psychology of Smart Investing"
     },
     {
-      "slug": "behavioural-economics-finance",
-      "title": "Behavioural Economics & Finance",
-      "category": "Masterclass",
-      "format": "Self-paced",
-      "duration": "2 Weeks",
-      "level": "All Levels",
-      "price": "₹999",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=70",
-      "description": "The psychology behind financial decisions — and how to apply behavioural nudges in client conversations.",
-      "outcomes": [
-        "Understand the psychology behind everyday financial decisions",
-        "Recognize cognitive biases that derail client outcomes",
-        "Apply behavioural nudges ethically in advisory conversations",
-        "Use data and analytics to spot behavioural patterns"
-      ]
+      "slug": "the-complete-analyst",
+      "title": "The Complete Analyst",
+      "subtitle": "Mastering Fundamental & Technical Analysis",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
+      ],
+      "description": "Mastering Fundamental & Technical Analysis"
+    },
+    {
+      "slug": "boardroom-reality",
+      "title": "Boardroom Reality",
+      "subtitle": "Putting Management Theories to Work",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Putting Management Theories to Work"
+    },
+    {
+      "slug": "macro-to-market",
+      "title": "Macro-to-Market",
+      "subtitle": "Applied Economics for Financial Careers",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Applied Economics for Financial Careers"
+    },
+    {
+      "slug": "the-monetary-triad",
+      "title": "The Monetary Triad",
+      "subtitle": "Navigating Money, Inflation & Rates",
+      "category": "Students & Public / Corporate",
+      "segments": [
+        "Students & Public",
+        "Corporate"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest",
+        "Employees in financial services and general public with academic interest"
+      ],
+      "description": "Navigating Money, Inflation & Rates"
+    },
+    {
+      "slug": "the-street-smart-leader",
+      "title": "The Street-Smart Leader",
+      "subtitle": "Real-World Execution Beyond the MBA",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Real-World Execution Beyond the MBA"
+    },
+    {
+      "slug": "shielding-your-wealth",
+      "title": "Shielding Your Wealth",
+      "subtitle": "Smart Risk Management in Personal Finance",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors"
+      ],
+      "description": "Smart Risk Management in Personal Finance"
+    },
+    {
+      "slug": "wealthtech-2-0",
+      "title": "WealthTech 2.0",
+      "subtitle": "Mastering AI-Powered Personal Finance",
+      "category": "Students & Public / Corporate",
+      "segments": [
+        "Students & Public",
+        "Corporate"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance / Public with academic interest / Investors",
+        "Bank and life insurance employees — Frontline & Level 1"
+      ],
+      "description": "Mastering AI-Powered Personal Finance"
+    },
+    {
+      "slug": "the-ai-augmented-professional",
+      "title": "The AI-Augmented Professional",
+      "subtitle": "Thriving in Next-Gen Workplaces",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Thriving in Next-Gen Workplaces"
+    },
+    {
+      "slug": "hire-ready-in-the-age-of-ai",
+      "title": "Hire-Ready in the Age of AI",
+      "subtitle": "Skills Algorithms Can't Replace",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Skills Algorithms Can't Replace"
+    },
+    {
+      "slug": "the-problem-solvers-toolkit",
+      "title": "The Problem-Solver's Toolkit",
+      "subtitle": "Turning Academic Frameworks into Solutions",
+      "category": "Students & Public",
+      "segments": [
+        "Students & Public"
+      ],
+      "audience": [
+        "Students of UG, PG and professional courses in Economics and Finance"
+      ],
+      "description": "Turning Academic Frameworks into Solutions"
+    },
+    {
+      "slug": "macro-to-branch",
+      "title": "Macro-to-Branch",
+      "subtitle": "Applied Economics for Modern Bankers",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Bank employees — Officers to Chief Manager level"
+      ],
+      "description": "Applied Economics for Modern Bankers"
+    },
+    {
+      "slug": "the-protection-economy",
+      "title": "The Protection Economy",
+      "subtitle": "Applied Economics for Insurance Leaders",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Life and health insurance employees — Frontline to Level 3"
+      ],
+      "description": "Applied Economics for Insurance Leaders"
+    },
+    {
+      "slug": "why-clients-buy",
+      "title": "Why Clients Buy",
+      "subtitle": "The Science of Financial Decisions",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Banking and insurance employees — Frontline to Level 2"
+      ],
+      "description": "The Science of Financial Decisions"
+    },
+    {
+      "slug": "value-multipliers",
+      "title": "Value Multipliers",
+      "subtitle": "Designing High-LTV Sales Funnels",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Frontline and Level 1 managers in the financial services industry"
+      ],
+      "description": "Designing High-LTV Sales Funnels"
+    },
+    {
+      "slug": "frictionless-closing",
+      "title": "Frictionless Closing",
+      "subtitle": "Overcoming Objections in Retail & Corporate Banking Sales",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Bank employees — Officers to Manager level"
+      ],
+      "description": "Overcoming Objections in Retail & Corporate Banking Sales"
+    },
+    {
+      "slug": "objection-to-conviction",
+      "title": "Objection to Conviction",
+      "subtitle": "Selling Peace of Mind with Confidence",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Life insurance employees — Frontline to Level 1"
+      ],
+      "description": "Selling Peace of Mind with Confidence"
+    },
+    {
+      "slug": "nudge-close",
+      "title": "Nudge & Close",
+      "subtitle": "Behavioral Science for High-Performing Sales Teams",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Frontline employees to Level 3 managers"
+      ],
+      "description": "Behavioral Science for High-Performing Sales Teams"
+    },
+    {
+      "slug": "guardrails-of-growth",
+      "title": "Guardrails of Growth",
+      "subtitle": "Strategic Risk Management for Bankers",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Bank employees — Managers and above"
+      ],
+      "description": "Strategic Risk Management for Bankers"
+    },
+    {
+      "slug": "shielding-value",
+      "title": "Shielding Value",
+      "subtitle": "Modern Risk Frameworks for Insurers",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Insurance employees — Managers and above"
+      ],
+      "description": "Modern Risk Frameworks for Insurers"
+    },
+    {
+      "slug": "high-performance-zero-burnout",
+      "title": "High Performance, Zero Burnout",
+      "subtitle": "Workplace Resilience & Wellbeing",
+      "category": "Corporate",
+      "segments": [
+        "Corporate"
+      ],
+      "audience": [
+        "Employees in any industry and level of employment"
+      ],
+      "description": "Workplace Resilience & Wellbeing"
     }
   ],
   "challenges": [

@@ -25,38 +25,152 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/bfsi-technical-mastery</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/campus-to-capital</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/consultative-sales-negotiation</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/bfsi-launchpad</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/workplace-behavioural-skills</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/where-capital-meets-opportunity</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/managerial-fundamentals</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/the-equity-engine</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/retail-financial-planning</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/mind-over-market</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bumblebeeindia.com/courses/behavioural-economics-finance</loc>
-    <lastmod>2026-11-15</lastmod>
+    <loc>https://bumblebeeindia.com/courses/the-complete-analyst</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/boardroom-reality</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/macro-to-market</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/the-monetary-triad</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/the-street-smart-leader</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/shielding-your-wealth</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/wealthtech-2-0</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/the-ai-augmented-professional</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/hire-ready-in-the-age-of-ai</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/the-problem-solvers-toolkit</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/macro-to-branch</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/the-protection-economy</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/why-clients-buy</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/value-multipliers</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/frictionless-closing</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/objection-to-conviction</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/nudge-close</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/guardrails-of-growth</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/shielding-value</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bumblebeeindia.com/courses/high-performance-zero-burnout</loc>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
